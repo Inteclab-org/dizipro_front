@@ -6,6 +6,7 @@ import SignUpUserSteps from "@/components/SignUpUserSteps";
 import Header from "@/components/Header";
 import { cookies } from "next/headers";
 import Hero from "@/components/Hero";
+import HowItWorks from "@/components/HowItWorks";
 
 export default async function Index() {
   const cookieStore = cookies();
@@ -27,6 +28,7 @@ export default async function Index() {
     <div className="main-container flex flex-col items-center justify-center">
       <Header />
       <Hero />
+      <HowItWorks />
 
       {/* <div className="animate-in flex-1 flex flex-col gap-20 opacity-0 max-w-4xl px-3">
         <Header />
