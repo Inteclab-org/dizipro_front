@@ -1,8 +1,9 @@
+import { HeroCarousel } from "./HeroCarousel";
 import { Button } from "./ui/button";
 
 export default function Hero() {
   return <>
-    <section className="flex items-center justify-center pt-[60px] pb-[100px] gap-[80px]">
+    <section className="w-full flex flex-col items-center justify-center pt-[60px] pb-[100px] gap-[80px]">
       <div className="max-w-[865px] w-full text-center flex flex-col items-center">
         <h1 className="tracking-[-1.04px] leading-[68px] uppercase font-semibold text-[52px] mb-[16px]">
           <span>We make </span>
@@ -15,6 +16,7 @@ export default function Hero() {
         </p>
         <Button variant="primary">Start now</Button>
       </div>
+      <HeroCarousel />
     </section>
   </>
 }
