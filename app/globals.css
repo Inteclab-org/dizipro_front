@@ -16,8 +16,8 @@
     --primary: 202 100% 43%;
     --primary-foreground: 202 77% 92%;
  
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 45 100% 87%;
+    --secondary-foreground: 44 51% 53%;
  
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
@@ -43,7 +43,7 @@
     --card-foreground: 210 40% 98%;
  
     --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover-foreground:45210 40% 98%;
  
     --primary: 210 40% 98%;
     --primary-foreground: 222.2 47.4% 11.2%;
@@ -70,13 +70,6 @@
   body {
     @apply bg-background text-foreground text-lg;
   }
-}
-
-.main-container {
-  max-width: 1440px;
-  width: 100%;
-  margin-left: 80px;
-  margin-right: 80px;
 }
 
 /* Timeline styles */
