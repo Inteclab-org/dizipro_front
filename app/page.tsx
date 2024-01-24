@@ -1,16 +1,13 @@
 import DeployButton from "../components/DeployButton";
 import AuthButton from "../components/AuthButton";
-import { createClient } from "@/utils/supabase/server";
 import ConnectSupabaseSteps from "@/components/ConnectSupabaseSteps";
 import SignUpUserSteps from "@/components/SignUpUserSteps";
-import Header from "@/components/Header";
+import { createClient } from "@/utils/supabase/server";
 import { cookies } from "next/headers";
 import Hero from "@/components/Hero";
 import HowItWorks from "@/components/HowItWorks";
 import OurWork from "@/components/OurWork";
 import WhyChooseUs from "@/components/WhyChooseUs";
-import PartnerWithUs from "@/components/PartnerWithUs";
-import Footer from "@/components/Footer";
 
 export default async function Index() {
   const cookieStore = cookies();
@@ -30,13 +27,10 @@ export default async function Index() {
 
   return (
     <>
-      <Header />
       <Hero />
       <HowItWorks />
       <OurWork />
       <WhyChooseUs />
-      <PartnerWithUs />
-      <Footer />
 
       {/* <div className="animate-in flex-1 flex flex-col gap-20 opacity-0 max-w-4xl px-3">
         <Header />
