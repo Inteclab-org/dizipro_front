@@ -10,6 +10,7 @@ import HowItWorks from "@/components/HowItWorks";
 import OurWork from "@/components/OurWork";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import PartnerWithUs from "@/components/PartnerWithUs";
+import Footer from "@/components/Footer";
 
 export default async function Index() {
   const cookieStore = cookies();
@@ -35,6 +36,7 @@ export default async function Index() {
       <OurWork />
       <WhyChooseUs />
       <PartnerWithUs />
+      <Footer />
 
       {/* <div className="animate-in flex-1 flex flex-col gap-20 opacity-0 max-w-4xl px-3">
         <Header />
