@@ -8,6 +8,7 @@ import { cookies } from "next/headers";
 import Hero from "@/components/Hero";
 import HowItWorks from "@/components/HowItWorks";
 import OurWork from "@/components/OurWork";
+import WhyChooseUs from "@/components/WhyChooseUs";
 
 export default async function Index() {
   const cookieStore = cookies();
@@ -31,6 +32,7 @@ export default async function Index() {
       <Hero />
       <HowItWorks />
       <OurWork />
+      <WhyChooseUs />
 
       {/* <div className="animate-in flex-1 flex flex-col gap-20 opacity-0 max-w-4xl px-3">
         <Header />
