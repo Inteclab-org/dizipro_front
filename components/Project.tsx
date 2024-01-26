@@ -12,22 +12,22 @@ import {
 } from "@/components/ui/carousel"
 import Image from "next/image";
 import { Project } from "./Projects";
+import BlurImage from "./BlurImage";
 
 export default function Project(props: Project) {
-  const STORAGE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL;
-
   return (
     <Dialog>
       <DialogTrigger>
       <li className="bg-white flex flex-col py-6 pr-[25px] pl-[23px] border border-border/15 cursor-pointer hover:border-border/25 hover:shadow-[0px_12px_20px_0px_rgba(0,0,0,0.07)] hover:scale-110 transition-all duration-[0.3]">
-        <Image
+        {/* <Image
           className="w-[238px] h-[238px] object-cover"
           loading="eager"
           alt={props.name}
           src={`${STORAGE_URL}${props.src}`}
           width={238}
           height={238}
-        />
+        /> */}
+        <BlurImage {...props} />
       </li>
       </DialogTrigger>
       <DialogContent className="max-w-[708px] w-full sm:rounded-none p-0">
