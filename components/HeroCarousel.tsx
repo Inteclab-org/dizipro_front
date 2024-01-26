@@ -10,6 +10,7 @@ import {
 import Image from "next/image"
 
 export function HeroCarousel() {
+  const STORAGE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL;
   return (
     <Carousel className="max-w-[1280px] w-full" opts={{
       loop: true
@@ -20,7 +21,7 @@ export function HeroCarousel() {
             <Image
               className="w-[1280px] h-[302px]"
               alt={`Hero carousel item ${index + 1}`}
-              src={`/hero-carousel-${index + 1}.png`}
+              src={`${STORAGE_URL}/storage/v1/object/public/images/hero-carousel-${index + 1}.jpg`}
               width={1280}
               height={302}
             />
