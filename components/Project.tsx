@@ -11,8 +11,11 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel"
 import Image from "next/image";
+import { Project } from "./Projects";
 
-export default function Project() {
+export default function Project(props: Project) {
+  const STORAGE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL;
+
   return (
     <Dialog>
       <DialogTrigger>
@@ -20,8 +23,8 @@ export default function Project() {
         <Image
           className="w-[238px] h-[238px] object-cover"
           loading="eager"
-          alt=""
-          src="/project.png"
+          alt={props.name}
+          src={`${STORAGE_URL}${props.src}`}
           width={238}
           height={238}
         />
