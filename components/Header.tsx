@@ -19,10 +19,10 @@ export default function Header() {
       <header className="max-w-[1200px] w-full flex items-center justify-between gap-[40px] pt-[32px] pb-[16px] border-b-[1px] border-border/20">
         <div className="max-w-[51%] w-full flex items-center justify-between gap-[40px]">
           <nav className="flex items-center shrink-0 gap-[42px] leading-[24px]">
-            <Link href="/">
+            <Link href="/#how-it-works">
               How it works
             </Link>
-            <Link href="/">
+            <Link href="/portfolio">
               Our portfolio
             </Link>
             <Link href="/">Support</Link>
