@@ -14,16 +14,17 @@ import { createClient } from "@/utils/supabase/client";
 import { useEffect, useState } from "react";
 
 export default function Portfolio() {
-  const [tabs, setTabs] = useState<Category[] | null>(null);
-  const [query, setQuery] = useState<string>("");
   const supabase = createClient();
+  const [tabs, setTabs] = useState<Category[] | null>(null);
+  const [category, setCategory] = useState<number | null>(null);
+
 
   useEffect(() => {
     const getData = async () => {
       const { data: categories } = await supabase.from('categories').select('*');
       setTabs(categories);
     }
-    getData()
+    getData();
   }, []);
   const index = 2;
   return (
@@ -31,22 +32,42 @@ export default function Portfolio() {
       <h2 className="tracking-[-1.04px] leading-[68px] uppercase font-semibold text-[52px] mb-[40px]">
         Our work
       </h2>
-      <Tabs defaultValue={query || "all"}>
+      <Tabs defaultValue={category ? String(category) : "all"}>
         <TabsList className="mb-[40px] p-0 bg-transparent">
-          <TabsTrigger value="all" className="border-b-[3px] py-3 px-5 rounded-none border-border/10 font-bold leading-[140%] tracking-[-0.18px] text-[18px] data-[state=active]:shadow-none data-[state=active]:text-primary data-[state=active]:border-primary">All models</TabsTrigger>
+          <TabsTrigger
+            value="all"
+            className="border-b-[3px] py-3 px-5 rounded-none border-border/10 font-bold leading-[140%] tracking-[-0.18px] text-[18px] data-[state=active]:shadow-none data-[state=active]:text-primary data-[state=active]:border-primary"
+            onClick={() => {
+              console.log("category", tab.id)
+
+              setCategory(null)
+            }}
+          >
+            All models
+          </TabsTrigger>
           {
             tabs?.map((tab: Category) => (
-              <TabsTrigger key={tab.id} value={tab.name} className="border-b-[3px] py-3 px-5 rounded-none border-border/10 font-bold leading-[140%] tracking-[-0.18px] text-[18px] data-[state=active]:shadow-none data-[state=active]:text-primary data-[state=active]:border-primary">{tab.name}</TabsTrigger>
+              <TabsTrigger
+                key={tab.id}
+                value={tab.name}
+                className="border-b-[3px] py-3 px-5 rounded-none border-border/10 font-bold leading-[140%] tracking-[-0.18px] text-[18px] data-[state=active]:shadow-none data-[state=active]:text-primary data-[state=active]:border-primary"
+                onClick={() => {
+                  console.log("category", tab.id)
+                  setCategory(tab.id);
+                }}
+              >
+                {tab.name}
+              </TabsTrigger>
             ))
           }
         </TabsList>
         <TabsContent value="all">
-          <Projects />
+          <Projects category_id={category} />
         </TabsContent>
         {
           tabs?.map((tab: Category) => (
             <TabsContent key={tab.id} value={tab.name}>
-              <Projects />
+              <Projects category_id={category} />
             </TabsContent>
           ))
         }
@@ -78,6 +99,6 @@ export default function Portfolio() {
 }
 
 export interface Category {
-  id: string;
+  id: number;
   name: string;
 }

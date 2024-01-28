@@ -15,14 +15,13 @@ export default function BlurImage(props: Project) {
         src={`${STORAGE_URL}${props.src}`}
         width={238}
         height={238}
-        objectFit="cover"
         className={cn(
-          'w-[238px] h-[238px] group-hover:opacity-75 duration-700 ease-in-out',
+          'object-contain group-hover:opacity-75 duration-700 ease-in-out',
           isLoading
             ? 'grayscale blur-2xl scale-110'
             : 'grayscale-0 blur-0 scale-100'
         )}
-        onLoadingComplete={() => setLoading(false)}
+        onLoad={() => setLoading(false)}
       />
     // </a>
   );
