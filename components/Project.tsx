@@ -10,11 +10,10 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel"
-import Image from "next/image";
-import { Project } from "./Projects";
+import { ProjectType } from "./Projects";
 import BlurImage from "./BlurImage";
 
-export default function Project(props: Project) {
+export default function Project(props: ProjectType) {
   return (
     <Dialog>
       <DialogTrigger>

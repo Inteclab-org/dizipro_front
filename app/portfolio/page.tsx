@@ -35,11 +35,11 @@ export default function Portfolio() {
       <Tabs defaultValue={category ? String(category) : "all"}>
         <TabsList className="mb-[40px] p-0 bg-transparent">
           <TabsTrigger
+            key="tab-trigger-all"
             value="all"
             className="border-b-[3px] py-3 px-5 rounded-none border-border/10 font-bold leading-[140%] tracking-[-0.18px] text-[18px] data-[state=active]:shadow-none data-[state=active]:text-primary data-[state=active]:border-primary"
             onClick={() => {
-              console.log("category", tab.id)
-
+              console.log("category click", null)
               setCategory(null)
             }}
           >
@@ -52,7 +52,7 @@ export default function Portfolio() {
                 value={tab.name}
                 className="border-b-[3px] py-3 px-5 rounded-none border-border/10 font-bold leading-[140%] tracking-[-0.18px] text-[18px] data-[state=active]:shadow-none data-[state=active]:text-primary data-[state=active]:border-primary"
                 onClick={() => {
-                  console.log("category", tab.id)
+                  console.log("category click", tab.id)
                   setCategory(tab.id);
                 }}
               >
@@ -61,13 +61,13 @@ export default function Portfolio() {
             ))
           }
         </TabsList>
-        <TabsContent value="all">
-          <Projects category_id={category} />
+        <TabsContent value="all" key="tab-trigger-content">
+          <Projects category_id={category} limit={24} />
         </TabsContent>
         {
           tabs?.map((tab: Category) => (
             <TabsContent key={tab.id} value={tab.name}>
-              <Projects category_id={category} />
+              <Projects category_id={category} limit={24} />
             </TabsContent>
           ))
         }

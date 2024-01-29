@@ -1,4 +1,3 @@
-import Image from "next/image";
 import TimelineItem, { TimelineItemProps } from "./TimelineItem";
 
 const timeline: TimelineItemProps[] = [

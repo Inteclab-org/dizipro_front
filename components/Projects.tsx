@@ -4,23 +4,24 @@ import { createClient } from "@/utils/supabase/client";
 import Project from "./Project";
 import { useEffect, useMemo, useState } from "react";
 
-export default function Projects({category_id}: {category_id: number | null}) {
-  const supabase = createClient();
-  const [projects, setProjects] = useState<Project[] | null>(null);
-
+export default function Projects({category_id, limit = 12}: {category_id: number | null, limit?: number}) {
+  const [projects, setProjects] = useState<ProjectType[] | null>(null);
+  
   const fetchData = useMemo(async () => {
+    const supabase = createClient();
     console.log('category_id:', category_id);
 
     try {
       let data = null;
 
-      if (category_id !== null) {
+      if (category_id) {
         ({ data } = await supabase
           .from('category_projects_view')
           .select(`id, name, src`)
-          .eq('category_id', category_id));
+          .eq('category_id', category_id)
+          .limit(limit));
       } else {
-        ({ data } = await supabase.from('projects').select(`id, name, src`));
+        ({ data } = await supabase.from('projects').select(`id, name, src`).limit(limit));
       }
 
       console.log('Fetched data:', data);
@@ -45,7 +46,7 @@ export default function Projects({category_id}: {category_id: number | null}) {
   return <>
     <ul className="grid grid-cols-[repeat(4,_minmax(214px,_1fr))] mb-[40px]">
       {
-        projects?.map((project: Project) => (
+        projects?.map((project: ProjectType) => (
           <Project key={project.id} {...project} />
         ))
       }
@@ -53,7 +54,7 @@ export default function Projects({category_id}: {category_id: number | null}) {
   </>
 }
 
-export interface Project {
+export interface ProjectType {
   id: number;
   name: string;
   src: string;
