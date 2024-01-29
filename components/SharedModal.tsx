@@ -4,6 +4,8 @@ import { useSwipeable } from "react-swipeable";
 import { ProjectType } from "./Projects";
 import BlurImage from "./BlurImage";
 import { range, variants } from "@/lib/utils";
+import useKeypress from "react-use-keypress";
+import Arrow from "./icons/Arrow";
 
 export default function SharedModal({
   index,
@@ -33,6 +35,18 @@ export default function SharedModal({
     trackMouse: true,
   });
 
+  useKeypress("ArrowRight", () => {
+    if (images && index < images.length) {
+      changePhotoId(index + 1);
+    }
+  });
+
+  useKeypress("ArrowLeft", () => {
+    if (index > 1) {
+      changePhotoId(index - 1);
+    }
+  });
+
   return (
     <MotionConfig
       transition={{
@@ -41,12 +55,12 @@ export default function SharedModal({
       }}
     >
       <div
-        className="relative flex aspect-[3/1.5] w-full max-w-[1280px] items-center h-auto"
+        className="relative flex aspect-[3/2.75] w-full max-w-[1280px] items-center h-auto"
         {...handlers}
       >
         {/* Main image */}
         <div className="w-full overflow-hidden">
-          <div className="relative flex aspect-[3/1.5] items-center justify-center">
+          <div className="relative flex aspect-[3/2.75] items-center justify-center">
             <AnimatePresence initial={false} custom={direction}>
               <motion.div
                 key={index}
@@ -59,11 +73,11 @@ export default function SharedModal({
               >
                 <Image
                   src={`${STORAGE_URL}${currentPhoto.src}`}
-                  width={navigation ? 1280 : 1920}
-                  height={navigation ? 853 : 1280}
+                  width={708}
+                  height={708}
                   priority
                   alt={currentPhoto.name}
-                  className="max-w-max"
+                  className="max-w-max h-auto"
                 />
               </motion.div>
             </AnimatePresence>
@@ -71,30 +85,32 @@ export default function SharedModal({
         </div>
 
         <div className="absolute inset-0 mx-auto flex max-w-7xl items-center justify-center">
-          <div className="relative aspect-[3/1.5] max-h-full w-full">
-            {/* {navigation && (
+          <div className="relative aspect-[3/2] max-h-full w-full">
+            {navigation && (
               <>
                 {index > 1 && (
                   <button
-                    className="absolute left-3 top-[calc(50%-16px)] rounded-full bg-black/50 p-3 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white focus:outline-none"
+                    className="absolute -left-[230px] top-[calc(50%-16px)] rounded-2 bg-white/50 p-3 backdrop-blur-[2px] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.10)] transition hover:bg-white/75 focus:outline-none"
                     style={{ transform: "translate3d(0, 0, 0)" }}
                     onClick={() => {
                       changePhotoId(index - 1);
                       // changeCurrentPhoto()
                     }}
                   >
+                    <Arrow className="w-8 h-8" />
                   </button>
                 )}
                 {images && index < images?.length && (
                   <button
-                    className="absolute right-3 top-[calc(50%-16px)] rounded-full bg-black/50 p-3 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white focus:outline-none"
+                    className="absolute -right-[230px] top-[calc(50%-16px)] rounded-2 bg-white/50 p-3 backdrop-blur-[2px] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.10)] transition hover:bg-white/75 focus:outline-none"
                     style={{ transform: "translate3d(0, 0, 0)" }}
                     onClick={() => changePhotoId(index + 1)}
                   >
+                    <Arrow className="w-8 h-8 -rotate-180" />
                   </button>
                 )}
               </>
-            )} */}
+            )}
           </div>
 
           {navigation && (

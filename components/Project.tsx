@@ -32,7 +32,7 @@ export default function Project(props: ProjectProps) {
         <BlurImage project={props.project} width={238} height={238} />
       </li>
       </DialogTrigger>
-      <DialogContent className="max-w-[1280px] w-full sm:rounded-none p-0">
+      <DialogContent className="max-w-[708px] w-full border-0 sm:rounded-none p-0">
         <SharedModal
           index={projectId}
           changePhotoId={(index: number) => setProjectId(index)}
