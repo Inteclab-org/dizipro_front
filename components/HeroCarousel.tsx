@@ -1,3 +1,5 @@
+"use client"
+
 import {
   Carousel,
   CarouselContent,
@@ -6,13 +8,21 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel"
 import Image from "next/image"
+import Autoplay from "embla-carousel-autoplay"
+import { useRef } from "react";
 
 export function HeroCarousel() {
   const STORAGE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const plugin = useRef(
+    Autoplay({ delay: 3000, stopOnInteraction: true })
+  )
+
   return (
     <Carousel className="max-w-[1280px] w-full" opts={{
-      loop: true
-    }}>
+        loop: true
+      }}
+      plugins={[plugin.current]}
+    >
       <CarouselContent>
         {Array.from({ length: 5 }).map((_, index) => (
           <CarouselItem className=" h-[302px] flex items-center justify-center px-0" key={`hero-carousel-item-${index}`}>
