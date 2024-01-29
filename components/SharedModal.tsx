@@ -23,7 +23,7 @@ export default function SharedModal({
 
   const handlers = useSwipeable({
     onSwipedLeft: () => {
-      if (images && index < images?.length) {
+      if (images && index < images.length) {
         changePhotoId(index + 1);
       }
     },
@@ -72,7 +72,7 @@ export default function SharedModal({
                 className="absolute"
               >
                 <Image
-                  src={`${STORAGE_URL}${currentPhoto.src}`}
+                  src={`${STORAGE_URL}/storage/v1/object/public/images/project-${index}.png`}
                   width={708}
                   height={708}
                   priority

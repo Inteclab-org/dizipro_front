@@ -13,10 +13,11 @@ export default function OurWork() {
   const getData = async () => {
     const { data } = await supabase.from('projects').select('*').limit(12);
     if (data) {
-      setProjects(data);
+      const sortedData = data.sort((a, b) => a.id - b.id);
+      setProjects(sortedData);
     }
   }
-  
+
   useEffect(() => {
     getData();
   }, []);

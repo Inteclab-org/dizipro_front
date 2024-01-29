@@ -37,8 +37,10 @@ export default function Portfolio() {
         : supabase.from('projects').select(`id, name, src`);
 
       const { data: projectsData, count } = await query.range((page - 1) * limit, page * limit - 1).limit(limit);
-
-      setProjects(projectsData);
+      if (projectsData) {
+        const sortedData = projectsData.sort((a, b) => a.id - b.id)
+        setProjects(sortedData);
+      }
       if (count) {
         setTotalPages(Math.ceil(count / limit));
       }
