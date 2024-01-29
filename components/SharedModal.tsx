@@ -41,12 +41,12 @@ export default function SharedModal({
       }}
     >
       <div
-        className="relative flex aspect-[3/2] w-full max-w-7xl items-center wide:h-full xl:taller-than-854:h-auto"
+        className="relative flex aspect-[3/1.5] w-full max-w-[1280px] items-center h-auto"
         {...handlers}
       >
         {/* Main image */}
         <div className="w-full overflow-hidden">
-          <div className="relative flex aspect-[3/2] items-center justify-center">
+          <div className="relative flex aspect-[3/1.5] items-center justify-center">
             <AnimatePresence initial={false} custom={direction}>
               <motion.div
                 key={index}
@@ -71,7 +71,7 @@ export default function SharedModal({
         </div>
 
         <div className="absolute inset-0 mx-auto flex max-w-7xl items-center justify-center">
-          <div className="relative aspect-[3/2] max-h-full w-full">
+          <div className="relative aspect-[3/1.5] max-h-full w-full">
             {/* {navigation && (
               <>
                 {index > 1 && (
