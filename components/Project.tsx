@@ -40,6 +40,7 @@ export default function Project(props: ProjectProps) {
           changeCurrentPhoto={(item: ProjectType) => setCurrentProject(item)}
           images={props.data}
           navigation={true}
+          direction={-1}
         />
       </DialogContent>
     </Dialog>

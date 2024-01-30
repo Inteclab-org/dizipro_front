@@ -24,6 +24,22 @@ export const variants = {
   },
 };
 
+export const fadeIn = {
+  hidden: {
+    y: 20,
+    opacity: 0
+  },
+  visible: (delay: number) => {
+    return {
+      y: 0,
+      opacity: 1,
+      transition: {
+        delay: delay * 0.1
+      },
+    }
+  },
+};
+
 export const range = (start: number, end: number) => {
   let output = [];
   if (typeof end === "undefined") {

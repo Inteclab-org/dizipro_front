@@ -27,16 +27,10 @@ const timeline: TimelineItemProps[] = [
   }
 ];
 
-export default function Timeline({
-}: TimelineProps) {
+export default function Timeline() {
   return <div className="timeline w-[1140px] h-[185px] relative flex items-center justify-center">
-    {
-      timeline.map((timelineItem, index) => (
-        <TimelineItem key={`${timelineItem.icon}-${index}`} {...timelineItem} />
-      ))
-    }
+    {timeline.map((timelineItem, index) => (
+      <TimelineItem key={`${timelineItem.icon}-${index}`} index={index + 1} {...timelineItem} />
+    ))}
   </div>
-}
-
-export interface TimelineProps {
 }
