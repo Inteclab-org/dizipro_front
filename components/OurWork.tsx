@@ -5,6 +5,8 @@ import Projects, { ProjectType } from "./Projects";
 import { Button } from "./ui/button";
 import { useEffect, useState } from "react";
 import { createClient } from "@/utils/supabase/client";
+import { fadeIn } from "@/lib/utils";
+import { motion } from "framer-motion";
 
 export default function OurWork() {
   const supabase = createClient();
@@ -22,14 +24,18 @@ export default function OurWork() {
     getData();
   }, []);
   return <>
-  <section className="flex flex-col max-w-[1140px] w-full text-center pt-[36px] pb-[100px]">
-    <h2 className="tracking-[-1.04px] leading-[68px] uppercase font-semibold text-[52px] mb-[50px]">
-      Our work
-    </h2>
+  <section className="flex flex-col items-center max-w-[1140px] w-full text-center pt-[36px] pb-[100px]">
+    <motion.div initial="hidden" whileInView="visible" variants={fadeIn} viewport={{ once: true }} custom={3} >
+      <h2 className="tracking-[-1.04px] leading-[68px] uppercase font-semibold text-[52px] mb-[50px]">
+        Our work
+      </h2>
+    </motion.div>
     <Projects data={projects} />
-    <Button variant="outline" asChild>
-      <Link href="/portfolio" className="max-w-[250px] w-full self-center">Show all</Link>
-    </Button>
+    <motion.div className="max-w-[250px] w-full" initial="hidden" whileInView="visible" variants={fadeIn} viewport={{ once: true }} custom={3} >
+      <Button variant="outline" asChild>
+        <Link href="/portfolio">Show all</Link>
+      </Button>
+    </motion.div>
   </section>
   </>
 }
