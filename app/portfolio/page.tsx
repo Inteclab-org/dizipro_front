@@ -51,13 +51,12 @@ export default function Portfolio() {
   const fetchData = async (page: number) => {
     try {
       const query = category
-        ? supabase.from('category_projects_view').select(`id, name, src`).eq('category_id', category)
-        : supabase.from('projects').select(`id, name, src`);
+        ? supabase.from('category_projects_view').select(`id, name, src, project_id, images`).eq('category_id', category).is('project_id', null)
+        : supabase.from('all_projects_view').select(`id, name, src, project_id, images`);
 
-      const { data: projectsData, count } = await query.range((page - 1) * limit, page * limit - 1).limit(limit);
+      const { data: projectsData, count } = await query.range((page - 1) * limit, page * limit - 1).limit(limit).order('id', { ascending: true });
       if (projectsData) {
-        const sortedData = projectsData.sort((a, b) => a.id - b.id)
-        setProjects(sortedData);
+        setProjects(projectsData);
       }
       if (count) {
         setTotalPages(Math.ceil(count / limit));

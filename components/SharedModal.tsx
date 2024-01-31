@@ -6,46 +6,45 @@ import BlurImage from "./BlurImage";
 import { range, variants } from "@/lib/utils";
 import useKeypress from "react-use-keypress";
 import Arrow from "./icons/Arrow";
+import { useState } from "react";
 
 export default function SharedModal({
   index,
-  images,
   changePhotoId,
   navigation,
   currentPhoto,
-  changeCurrentPhoto,
   direction,
 }: SharedModalProps) {
   const STORAGE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  let filteredImages = images?.filter((img: ProjectType) =>
-    range(index - 15, index + 15).includes(img.id),
-  );
+  const [currentProject, setCurrentProject] = useState(currentPhoto);
 
-  const handlers = useSwipeable({
-    onSwipedLeft: () => {
-      if (images && index < images.length) {
-        changePhotoId(index + 1);
-      }
-    },
-    onSwipedRight: () => {
-      if (index > 1) {
-        changePhotoId(index - 1);
-      }
-    },
-    trackMouse: true,
-  });
+  // const handlers = useSwipeable({
+  //   onSwipedLeft: () => {
+  //     if (currentPhoto.images && currentProject.id < currentPhoto.images.length) {
+  //       changePhotoId(index + 1);
+  //     }
+  //   },
+  //   onSwipedRight: () => {
+  //     if (currentProject.id > 1) {
+  //       changePhotoId(index - 1);
+  //     }
+  //   },
+  //   trackMouse: true,
+  // });
 
-  useKeypress("ArrowRight", () => {
-    if (images && index < images.length) {
-      changePhotoId(index + 1);
-    }
-  });
+  // useKeypress("ArrowRight", () => {
+  //   if (currentProject.images && index < currentProject.images.length) {
+  //     changePhotoId(index + 1);
+  //   }
+  // });
 
-  useKeypress("ArrowLeft", () => {
-    if (index > 1) {
-      changePhotoId(index - 1);
-    }
-  });
+  // useKeypress("ArrowLeft", () => {
+  //   if (index > 1) {
+  //     changePhotoId(index - 1);
+  //   }
+  // });
+
+  console.log(currentProject, currentProject.images)
 
   return (
     <MotionConfig
@@ -56,14 +55,14 @@ export default function SharedModal({
     >
       <div
         className="relative flex aspect-[3/2.75] w-full max-w-[1280px] items-center h-auto"
-        {...handlers}
+        // {...handlers}
       >
         {/* Main image */}
         <div className="w-full overflow-hidden">
           <div className="relative flex aspect-[3/2.75] items-center justify-center">
             <AnimatePresence initial={false} custom={direction}>
               <motion.div
-                key={index}
+                key={currentPhoto.id}
                 custom={direction}
                 variants={variants}
                 initial="enter"
@@ -72,11 +71,11 @@ export default function SharedModal({
                 className="absolute"
               >
                 <Image
-                  src={`${STORAGE_URL}/storage/v1/object/public/images/project-${index}.png`}
+                  src={`${STORAGE_URL}${currentProject.src}`}
                   width={708}
                   height={708}
                   priority
-                  alt={currentPhoto.name}
+                  alt={currentProject.name}
                   className="max-w-max h-auto"
                 />
               </motion.div>
@@ -88,19 +87,18 @@ export default function SharedModal({
           <div className="relative aspect-[3/2] max-h-full w-full">
             {navigation && (
               <>
-                {index > 1 && (
+                {/* {currentPhoto.images && currentPhoto.images?.length > 1 && index > 1 && (
                   <button
                     className="absolute -left-[230px] top-[calc(50%-16px)] rounded-2 bg-white/50 p-3 backdrop-blur-[2px] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.10)] transition hover:bg-white/75 focus:outline-none"
                     style={{ transform: "translate3d(0, 0, 0)" }}
                     onClick={() => {
                       changePhotoId(index - 1);
-                      // changeCurrentPhoto()
                     }}
                   >
                     <Arrow className="w-8 h-8" />
                   </button>
                 )}
-                {images && index < images?.length && (
+                {currentPhoto.images && index < currentPhoto.images?.length - 1 && (
                   <button
                     className="absolute -right-[230px] top-[calc(50%-16px)] rounded-2 bg-white/50 p-3 backdrop-blur-[2px] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.10)] transition hover:bg-white/75 focus:outline-none"
                     style={{ transform: "translate3d(0, 0, 0)" }}
@@ -108,7 +106,7 @@ export default function SharedModal({
                   >
                     <Arrow className="w-8 h-8 -rotate-180" />
                   </button>
-                )}
+                )} */}
               </>
             )}
           </div>
@@ -120,25 +118,24 @@ export default function SharedModal({
                 className="mx-auto mt-6 mb-6 flex aspect-[3/2] h-14"
               >
                 <AnimatePresence initial={false}>
-                  {filteredImages?.map((project) => (
+                  {currentPhoto.images && currentPhoto.images.length > 1 && currentPhoto.images.map((project, projectIndex) => (
                     <motion.button
                       initial={{
                         width: "0%",
-                        x: `${Math.max((index - 1) * -100, 15 * -100)}%`,
+                        x: `${Math.max((projectIndex - 1) * -100, -100)}%`,
                       }}
                       animate={{
-                        scale: project.id === index ? 1.25 : 1,
+                        scale: project.src === currentProject.src ? 1.25 : 1,
                         width: "100%",
-                        x: `${Math.max(index * -100, 15 * -100)}%`,
+                        x: `${Math.max((projectIndex + 1) * -100, -100)}%`,
                       }}
                       exit={{ width: "0%" }}
                       onClick={() => {
-                        changePhotoId(project.id);
-                        changeCurrentPhoto(project);
+                        setCurrentProject(project);
                       }}
-                      key={project.id}
+                      key={`${project.id}${currentProject.src}`}
                       className={`${
-                        project.id === index
+                        project.src === currentProject.src
                           ? "z-20 rounded-md shadow shadow-black/50 bg-white"
                           : "z-10 bg-white/40"
                       } relative inline-block w-full shrink-0 transform-gpu overflow-hidden focus:outline-none`}
@@ -148,7 +145,7 @@ export default function SharedModal({
                         height={120}
                         project={project}
                         className={`${
-                          project.id === index
+                          project.src === currentProject.src
                             ? "brightness-110 hover:brightness-110"
                             : "brightness-50 contrast-125 hover:brightness-75"
                         } h-full transform object-cover transition`}
@@ -167,10 +164,8 @@ export default function SharedModal({
 
 export interface SharedModalProps {
   index: number;
-  images: ProjectType[] | null;
   currentPhoto: ProjectType;
   changePhotoId: (index: number) => void;
-  changeCurrentPhoto: (item: ProjectType) => void;
   navigation: boolean;
   direction?: number;
 }
