@@ -34,7 +34,9 @@ export const fadeIn = {
       y: 0,
       opacity: 1,
       transition: {
-        delay: delay * 0.1
+        delay: delay * 0.1,
+        duration: 0.4,
+        ease: [0.42, 0, 0.58, 1]
       },
     }
   },
