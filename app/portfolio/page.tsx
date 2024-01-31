@@ -1,17 +1,35 @@
 "use client";
 
+import dynamic from 'next/dynamic';
 import Projects, { ProjectType } from "@/components/Projects";
-import {
-  Pagination,
-  PaginationContent,
-  PaginationItem,
-  PaginationLink,
-  PaginationNext,
-  PaginationPrevious,
-} from "@/components/ui/pagination";
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { createClient } from "@/utils/supabase/client";
 import { useEffect, useState } from "react";
+const Tabs = dynamic(() => import('@/components/ui/tabs').then((module) => module.Tabs), {
+  ssr: false,
+});
+const TabsList = dynamic(() => import('@/components/ui/tabs').then((module) => module.TabsList), {
+  ssr: false,
+});
+const TabsTrigger = dynamic(() => import('@/components/ui/tabs').then((module) => module.TabsTrigger), {
+  ssr: false,
+});
+const Pagination = dynamic(() => import('@/components/ui/pagination').then((module) => module.Pagination), {
+  ssr: false,
+});
+const PaginationContent = dynamic(() => import('@/components/ui/pagination').then((module) => module.PaginationContent), {
+  ssr: false,
+});
+const PaginationItem = dynamic(() => import('@/components/ui/pagination').then((module) => module.PaginationItem), {
+  ssr: false,
+});
+const PaginationLink = dynamic(() => import('@/components/ui/pagination').then((module) => module.PaginationLink), {
+  ssr: false,
+});
+const PaginationNext = dynamic(() => import('@/components/ui/pagination').then((module) => module.PaginationNext), {
+  ssr: false,
+});const PaginationPrevious = dynamic(() => import('@/components/ui/pagination').then((module) => module.PaginationPrevious), {
+  ssr: false,
+});
 
 export default function Portfolio() {
   const supabase = createClient();
@@ -67,7 +85,7 @@ export default function Portfolio() {
           <TabsTrigger
             key="tab-trigger-all"
             value="all"
-            className="border-b-[3px] py-3 px-5 rounded-none border-border/10 font-bold leading-[140%] tracking-[-0.18px] text-[18px] data-[state=active]:shadow-none data-[state=active]:text-primary data-[state=active]:border-primary"
+            className="border-b-[3px] py-3 px-5 rounded-none border-border/10 font-bold leading-[140%] tracking-[-0.18px] text-[18px] transition-colors hover:border-border/30 data-[state=active]:shadow-none data-[state=active]:text-primary data-[state=active]:border-primary"
             onClick={() => {
               console.log("category click", null)
               setCategory(null)
@@ -80,7 +98,7 @@ export default function Portfolio() {
               <TabsTrigger
                 key={tab.id}
                 value={tab.name}
-                className="border-b-[3px] py-3 px-5 rounded-none border-border/10 font-bold leading-[140%] tracking-[-0.18px] text-[18px] data-[state=active]:shadow-none data-[state=active]:text-primary data-[state=active]:border-primary"
+                className="border-b-[3px] py-3 px-5 rounded-none border-border/10 font-bold leading-[140%] tracking-[-0.18px] text-[18px] transition-colors hover:border-border/30 data-[state=active]:shadow-none data-[state=active]:text-primary data-[state=active]:border-primary"
                 onClick={() => {
                   console.log("category click", tab.id)
                   setCategory(tab.id);
@@ -106,7 +124,7 @@ export default function Portfolio() {
           </PaginationItem>
           {
             Array.from({ length: totalPages }).map((_, index) => (
-              <PaginationItem>
+              <PaginationItem key={`pagination-itam-${index}`}>
                 <PaginationLink className={`${index + 1 === currentPage ? ' border-border/90' : ''}`} isActive={index + 1 === currentPage} onClick={(evt) => {
                   evt.preventDefault();
                   handlePageChange(index + 1);

@@ -41,8 +41,8 @@ export default function WhyChooseUs() {
       </motion.div>
       <ul className="flex justify-center gap-[24px] leading-[24px]">
         {
-          benefits.map((benefit: BenefitType) => (
-            <li className="flex-1 bg-white flex flex-col items-start py-5 pr-[21px] pl-[19px] gap-[8px] min-w-[200px] max-w-[267px] border border-border/15">
+          benefits.map((benefit: BenefitType, index) => (
+            <li key={`benefit-${index}`} className="flex-1 bg-white flex flex-col items-start py-5 pr-[21px] pl-[19px] gap-[8px] min-w-[200px] max-w-[267px] border border-border/15">
               <motion.div initial="hidden" whileInView="visible" variants={fadeIn} viewport={{ once: true }} custom={1} >
                 <div className="rounded-lg p-2 bg-primary-foreground mb-[5px]">
                   {benefit.icon("h-8 w-8 shrink-0")}

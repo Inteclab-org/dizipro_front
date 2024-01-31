@@ -27,7 +27,6 @@ export function HeroCarousel() {
         {Array.from({ length: 5 }).map((_, index) => (
           <CarouselItem className=" h-[302px] flex items-center justify-center px-0" key={`hero-carousel-item-${index}`}>
             <Image
-              className="w-[1280px] h-[302px]"
               alt={`Hero carousel item ${index + 1}`}
               src={`${STORAGE_URL}/storage/v1/object/public/images/hero-carousel-${index + 1}.jpg`}
               width={1280}

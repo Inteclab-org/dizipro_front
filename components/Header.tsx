@@ -17,7 +17,7 @@ export default function Header() {
     <>
       <header className="max-w-[1200px] w-full flex items-center justify-between gap-[40px] pt-[32px] pb-[16px] border-b-[1px] border-border/20">
         <Dialog>
-        <div className="max-w-[51%] w-full flex items-center justify-between gap-[40px]">
+        <div className="max-w-[55%] w-full flex items-center justify-between gap-[40px]">
           <nav className="flex items-center shrink-0 gap-[42px] leading-[24px]">
             <Link href="/#how-it-works">
               How it works
@@ -45,10 +45,10 @@ export default function Header() {
               </DialogDescription>
             </DialogHeader>
             <div className="flex gap-2">
-              <Link className="p-4 bg-muted" href="https://t.me/prtotp" target="_blank">
+              <Link className="p-4 bg-muted" href="https://t.me/prtopr" target="_blank">
                 <TelegramBig className="w-[112px] h-[112px]" />
               </Link>
-              <Link className="p-4 bg-muted" href=" https://wa.me/998906666660" target="_blank">
+              <Link className="p-4 bg-muted" href="https://wa.me/998906666660" target="_blank">
                 <WhatsUp className="w-[112px] h-[112px]" />
               </Link>
             </div>
