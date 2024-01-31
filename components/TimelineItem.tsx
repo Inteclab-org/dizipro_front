@@ -18,7 +18,7 @@ export default function TimelineItem({
         whileInView="visible"
         variants={fadeIn}
         viewport={{ once: true }}
-        custom={index ? index : 3}
+        custom={index ? index : 0}
       >
         {text}
       </motion.div>

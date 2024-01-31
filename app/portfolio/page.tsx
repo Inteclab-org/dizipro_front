@@ -9,7 +9,7 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { createClient } from "@/utils/supabase/client";
 import { useEffect, useState } from "react";
 
@@ -57,7 +57,6 @@ export default function Portfolio() {
     setCurrentPage(newPage);
   };
   
-  const index = 2;
   return (
     <section className="flex flex-col max-w-[1140px] w-full text-center pt-[64px] pb-[153px]">
       <h2 className="tracking-[-1.04px] leading-[68px] uppercase font-semibold text-[52px] mb-[40px]">
@@ -92,16 +91,7 @@ export default function Portfolio() {
             ))
           }
         </TabsList>
-        {/* <TabsContent value="all" key="tab-trigger-content"> */}
-          <Projects data={projects} />
-        {/* </TabsContent> */}
-        {/* {
-          tabs?.map((tab: Category) => (
-            <TabsContent key={tab.id} value={tab.name}>
-              <Projects data={projects} />
-            </TabsContent>
-          ))
-        } */}
+        <Projects data={projects} />
       </Tabs>
 
       <Pagination>
