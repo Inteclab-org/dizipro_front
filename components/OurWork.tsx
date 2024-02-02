@@ -13,10 +13,9 @@ export default function OurWork() {
   const [projects, setProjects] = useState<ProjectType[] | null>(null);
 
   const getData = async () => {
-    const { data } = await supabase.from('projects').select('*').limit(12);
+    const { data } = await supabase.from('all_projects_view').select(`id, name, src, project_id, images`).limit(12).order('id', { ascending: true });
     if (data) {
-      const sortedData = data.sort((a, b) => a.id - b.id);
-      setProjects(sortedData);
+      setProjects(data);
     }
   }
 
