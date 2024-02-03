@@ -58,29 +58,27 @@ export default function SharedModal({
         // {...handlers}
       >
         {/* Main image */}
-        <div className="w-full overflow-hidden">
-          <div className="relative flex aspect-[3/2.75] items-center justify-center">
-            <AnimatePresence initial={false} custom={direction}>
-              <motion.div
-                key={currentPhoto.id}
-                custom={direction}
-                variants={variants}
-                initial="enter"
-                animate="center"
-                exit="exit"
-                className="absolute"
-              >
-                <Image
-                  src={`${STORAGE_URL}${currentProject.src}`}
-                  width={708}
-                  height={708}
-                  priority
-                  alt={currentProject.name}
-                  className="max-w-max h-auto"
-                />
-              </motion.div>
-            </AnimatePresence>
-          </div>
+        <div className="w-full h-full overflow-hidden relative flex items-center justify-center">
+          <AnimatePresence initial={false} custom={direction}>
+            <motion.div
+              key={currentProject.id}
+              custom={direction}
+              variants={variants}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              className="absolute w-full h-full"
+            >
+              <Image
+                src={`${STORAGE_URL}${currentProject.src}`}
+                width={708}
+                height={708}
+                priority
+                alt={currentProject.name}
+                className="w-full h-full"
+              />
+            </motion.div>
+          </AnimatePresence>
         </div>
 
         <div className="absolute inset-0 mx-auto flex max-w-7xl items-center justify-center">
