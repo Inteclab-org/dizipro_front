@@ -49,7 +49,7 @@ export default function Hero() {
               </DialogDescription>
             </DialogHeader>
             <div className="flex gap-2">
-              <Link className="p-4 bg-muted" href="https://t.me/prtopr" target="_blank">
+              <Link className="p-4 bg-muted" href="https://t.me/dizipro_order" target="_blank">
                 <TelegramBig className="w-[112px] h-[112px]" />
               </Link>
               <Link className="p-4 bg-muted" href="https://wa.me/998906666660" target="_blank">
