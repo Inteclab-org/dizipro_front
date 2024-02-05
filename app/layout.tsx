@@ -14,12 +14,6 @@ export const metadata = {
   metadataBase: new URL(defaultUrl),
   title: "Next.js and Supabase Starter Kit",
   description: "The fastest way to build apps with Next.js and Supabase",
-  // viewport: {
-  //   width: "device-width",
-  //   initialScale: 1,
-  //   maximumScale: 1,
-  //   userScalable: false
-  // },
 };
 
 export default function RootLayout({
@@ -31,6 +25,11 @@ export default function RootLayout({
     <html lang="en" className={GeistSans.className}>
       <Head>
         <link href="https://fonts.cdnfonts.com/css/sf-pro-display" rel="stylesheet" />
+        <script
+          defer
+          data-domain="dizipro.org"
+          src="https://plausible.io/js/script.js"
+         />
       </Head>
       <body className="w-full min-h-screen flex flex-col items-center">
         <NextTopLoader />
