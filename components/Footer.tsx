@@ -15,7 +15,7 @@ const Footer: NextPage = memo(() => {
             <p className="font-semibold tracking-[-0.18px]">Contact Us</p>
             <div className="flex gap-[4px] text-base font-medium text-foreground/65">
               <Mail className="w-[22px] h-[22px] shrink-0" />
-              contact@halefarm.uz
+              diziprocompany@gmail.com
             </div>
           </div>
         </div>
