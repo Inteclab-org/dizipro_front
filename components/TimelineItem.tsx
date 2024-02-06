@@ -17,6 +17,7 @@ export default function TimelineItem({
         initial="hidden"
         whileInView="visible"
         variants={fadeIn}
+        viewport={{ once: true }}
         custom={index ? index : 0}
       >
         {text}
