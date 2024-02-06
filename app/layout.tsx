@@ -1,3 +1,4 @@
+import type { Viewport } from 'next'
 import { GeistSans } from "geist/font/sans";
 import "./globals.css";
 import PartnerWithUs from "@/components/PartnerWithUs";
@@ -15,6 +16,13 @@ export const metadata = {
   title: "Next.js and Supabase Starter Kit",
   description: "The fastest way to build apps with Next.js and Supabase",
 };
+
+export const viewport: Viewport = {
+  width: '1440',
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+}
 
 export default function RootLayout({
   children,
