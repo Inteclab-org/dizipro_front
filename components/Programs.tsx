@@ -23,7 +23,7 @@ export default function Programs() {
               )}
             >
               <Image
-                className="w-auto h-auto max-h-[85px]"
+                className="w-auto h-auto max-h-[70px]"
                 src={`${STORAGE_URL}/storage/v1/object/public/images/program-${index + 1}.png`}
                 alt={`program-item-${index}`}
                 width={272} 
