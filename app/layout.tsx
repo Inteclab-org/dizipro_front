@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import NextTopLoader from 'nextjs-toploader';
 import Head from "next/head";
+import Script from 'next/script';
 
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
@@ -18,7 +19,7 @@ export const metadata = {
 };
 
 export const viewport: Viewport = {
-  width: '1440',
+  width: '1280',
   initialScale: 1,
   maximumScale: 1,
   userScalable: true,
@@ -33,11 +34,11 @@ export default function RootLayout({
     <html lang="en" className={GeistSans.className}>
       <Head>
         <link href="https://fonts.cdnfonts.com/css/sf-pro-display" rel="stylesheet" />
-        <script
+        <Script
           defer
           data-domain="dizipro.org"
           src="https://plausible.io/js/script.js"
-         />
+        />
       </Head>
       <body className="w-full min-h-screen flex flex-col items-center">
         <NextTopLoader />
