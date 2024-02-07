@@ -1,12 +1,12 @@
-import type { Viewport } from 'next'
+import type { Viewport } from "next";
 import { GeistSans } from "geist/font/sans";
 import "./globals.css";
 import PartnerWithUs from "@/components/PartnerWithUs";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
-import NextTopLoader from 'nextjs-toploader';
+import NextTopLoader from "nextjs-toploader";
 import Head from "next/head";
-import Script from 'next/script';
+import Script from "next/script";
 
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
@@ -19,11 +19,11 @@ export const metadata = {
 };
 
 export const viewport: Viewport = {
-  width: '1280',
+  width: "1280",
   initialScale: 1,
   maximumScale: 1,
   userScalable: true,
-}
+};
 
 export default function RootLayout({
   children,
@@ -33,11 +33,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={GeistSans.className}>
       <Head>
-        <link href="https://fonts.cdnfonts.com/css/sf-pro-display" rel="stylesheet" />
-        <Script
-          defer
-          data-domain="dizipro.org"
-          src="https://plausible.io/js/script.js"
+        <link
+          href="https://fonts.cdnfonts.com/css/sf-pro-display"
+          rel="stylesheet"
         />
       </Head>
       <body className="w-full min-h-screen flex flex-col items-center">
@@ -45,7 +43,12 @@ export default function RootLayout({
         <Header />
         {children}
         <PartnerWithUs />
-        <Footer/>
+        <Footer />
+        <Script
+          defer
+          data-domain="dizipro.org"
+          src="https://plausible.io/js/script.js"
+        />
       </body>
     </html>
   );
