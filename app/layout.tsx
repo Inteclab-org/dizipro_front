@@ -37,12 +37,6 @@ export default function RootLayout({
           href="https://fonts.cdnfonts.com/css/sf-pro-display"
           rel="stylesheet"
         />
-        <script
-          async
-          defer
-          data-domain="dizipro.org"
-          src="https://plausible.io/js/plausible.js"
-        ></script>
       </Head>
       <body className="w-full min-h-screen flex flex-col items-center">
         <NextTopLoader />
@@ -50,6 +44,11 @@ export default function RootLayout({
         {children}
         <PartnerWithUs />
         <Footer />
+        <Script
+          defer
+          data-domain="dizipro.org"
+          src="https://plausible.io/js/script.js"
+        />
       </body>
     </html>
   );
