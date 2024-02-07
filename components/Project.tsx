@@ -15,16 +15,11 @@ type ProjectProps = {
 export default function Project({project}: ProjectProps) {
   const [projectId, setProjectId] = useState(project.id);
 
-  const handleProjectClick = () => {
-    // setProjectId(project.id);
-  }
-
   return (
     <Dialog>
       <DialogTrigger>
       <div
         className="bg-white flex flex-col py-6 pr-[25px] pl-[23px] border border-border/15 cursor-pointer hover:border-border/25 hover:shadow-[0px_12px_20px_0px_rgba(0,0,0,0.07)] hover:scale-110 transition-all duration-[0.3] overflow-hidden"
-        onClick={handleProjectClick}
       >
         <BlurImage project={project} width={238} height={238} />
       </div>

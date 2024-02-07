@@ -22,6 +22,7 @@ export default function OurWork() {
   useEffect(() => {
     getData();
   }, []);
+  
   return <>
   <section className="flex flex-col items-center max-w-[1140px] w-full text-center pt-[36px] pb-[100px]">
     <motion.div initial="hidden" whileInView="visible" variants={fadeIn} viewport={{ once: true }} custom={0} >
