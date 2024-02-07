@@ -47,13 +47,13 @@ export default function RootLayout({
         <Script
           defer
           data-domain="dizipro.org"
-          src="/js/script.js"
+          src="https://plausible.io/js/script.js"
         />
-        <Script
+        {/* <Script
           defer
           data-domain="fridmo-eight.vercel.app"
           src="https://plausible.io/js/script.js"
-        />
+        /> */}
       </body>
     </html>
   );
