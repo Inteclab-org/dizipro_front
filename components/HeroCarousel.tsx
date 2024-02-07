@@ -12,7 +12,6 @@ import Autoplay from "embla-carousel-autoplay"
 import { useRef } from "react";
 
 export function HeroCarousel() {
-  const STORAGE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const plugin = useRef(
     Autoplay({ delay: 3000, stopOnInteraction: true })
   )
@@ -28,7 +27,7 @@ export function HeroCarousel() {
           <CarouselItem className=" h-[302px] flex items-center justify-center px-0" key={`hero-carousel-item-${index}`}>
             <Image
               alt={`Hero carousel item ${index + 1}`}
-              src={`${STORAGE_URL}/storage/v1/object/public/images/hero-carousel-${index + 1}.jpg`}
+              src={`/hero-carousel-${index + 1}.jpg`}
               width={1280}
               height={302}
             />

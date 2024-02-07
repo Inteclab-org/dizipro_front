@@ -5,8 +5,6 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 
 export default function Programs() {
-  const STORAGE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL;
-
   return <>
     <section className="max-w-[1140px] w-full text-center mt-[36px] mb-[225px]">
       <motion.h2 initial="hidden" whileInView="visible" variants={fadeIn} viewport={{ once: true }} custom={0} className="tracking-[-1.04px] leading-[68px] uppercase font-semibold text-[52px] mb-[78px]">
@@ -24,7 +22,7 @@ export default function Programs() {
             >
               <Image
                 className="w-auto h-auto max-h-[70px]"
-                src={`${STORAGE_URL}/storage/v1/object/public/images/program-${index + 1}.png`}
+                src={`/program-${index + 1}.png`}
                 alt={`program-item-${index}`}
                 width={272} 
                 height={68}
