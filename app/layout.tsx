@@ -47,7 +47,7 @@ export default function RootLayout({
         <Script
           defer
           data-domain="dizipro.org"
-          src="https://plausible.io/js/script.js"
+          src="/js/script.js"
         />
       </body>
     </html>

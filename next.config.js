@@ -7,7 +7,15 @@ const nextConfig = {
       port: '',
       pathname: '/**'
     }]
-  }
+  },
+  async rewrites() {
+    return [
+      {
+        source: '/js/script.js',
+        destination: 'https://plausible.io/js/script.js'
+    },
+    ]
+  },
 };
 
 module.exports = nextConfig;
