@@ -37,11 +37,6 @@ export default function RootLayout({
           href="https://fonts.cdnfonts.com/css/sf-pro-display"
           rel="stylesheet"
         />
-        <Script
-          defer
-          data-domain="fridmo-eight.vercel.app"
-          src="https://plausible.io/js/script.js"
-        />
       </Head>
       <body className="w-full min-h-screen flex flex-col items-center">
         <NextTopLoader />
@@ -53,6 +48,11 @@ export default function RootLayout({
           defer
           data-domain="dizipro.org"
           src="/js/script.js"
+        />
+        <Script
+          defer
+          data-domain="fridmo-eight.vercel.app"
+          src="https://plausible.io/js/script.js"
         />
       </body>
     </html>
