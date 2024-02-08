@@ -7,6 +7,7 @@ import Header from "@/components/Header";
 import NextTopLoader from "nextjs-toploader";
 import Head from "next/head";
 import Script from "next/script";
+import { Toaster } from "@/components/ui/toaster";
 
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
@@ -44,6 +45,7 @@ export default function RootLayout({
         {children}
         <PartnerWithUs />
         <Footer />
+        <Toaster />
         <Script
           defer
           data-domain="dizipro.org"

@@ -3,6 +3,7 @@
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
+import { useToast } from "@/components/ui/use-toast"
 
 import { Button } from "@/components/ui/button";
 import {
@@ -27,6 +28,7 @@ import { useEffect, useState } from "react";
 import { ProjectType } from "@/components/Projects";
 import { Category } from "../page";
 import BlurImage from "@/components/BlurImage";
+import { error } from "console"
 
 const formSchema = z.object({
   category_id: z.string().optional(),
@@ -37,28 +39,57 @@ const formSchema = z.object({
 
 export default function UploadModel() {
   const supabase = createClient();
+  const { toast } = useToast();
   const [projects, setProjects] = useState<ProjectType[] | null>(null);
   const [categories, setCategories] = useState<Category[] | null>(null);
+  const [file, setFile] = useState<File | null>(null);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       category_id: "",
-      // name: "",
       project_id: "",
-      // src: ""
     },
   });
  
-  // 2. Define a submit handler.
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values)
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    if (!file) return;
+
+    const { data: modelImage, error: modelImageError } = await supabase
+      .storage
+      .from('images')
+      .upload(file.name, file, {
+        upsert: false
+      });
+
+    if (modelImage) {
+      const { error: modelError } = await supabase
+        .from('projects')
+        .insert({
+          name: values.name,
+          src: `/storage/v1/object/public/images/${modelImage.path}`,
+          ...(values.category_id ? {category_id: values.category_id} : {}),
+          ...(values.project_id ? {project_id: values.project_id} : {})
+        });
+      if (modelError) {
+        toast({
+          title: "Uh oh! Something went wrong.",
+          description: modelError?.message,
+          variant: "destructive"
+        });
+      }
+    }
+    if (modelImageError) {
+      toast({
+        title: "Uh oh! Something went wrong.",
+        description: modelImageError?.message,
+        variant: "destructive"
+      });
+    }
   }
 
   const getProjects =async () => {
-    const { data: projects } = await supabase.from('all_projects_view').select(`id, name, src, project_id, images`);
+    const { data: projects, error } = await supabase.from('all_projects_view').select(`id, name, src, project_id, images`);
     if (projects) {
       setProjects(projects);
     }
@@ -88,7 +119,10 @@ export default function UploadModel() {
               <FormItem>
                 <FormLabel>Picture*</FormLabel>
                 <FormControl>
-                  <Input placeholder="Model picture" type="file" {...field} />
+                  <Input placeholder="Model picture" type="file" {...field} onChange={(e) => {
+                    setFile(e.target.files && e.target.files[0]);
+                    return field.onChange(e);
+                  }} />
                 </FormControl>
                 <FormMessage />
               </FormItem>

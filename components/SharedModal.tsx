@@ -75,7 +75,7 @@ export default function SharedModal({
                 height={708}
                 priority
                 alt={currentProject.name}
-                className="w-full h-full"
+                className="w-full h-full object-contain"
               />
             </motion.div>
           </AnimatePresence>
