@@ -28,7 +28,8 @@ import { useEffect, useState } from "react";
 import { ProjectType } from "@/components/Projects";
 import { Category } from "../page";
 import BlurImage from "@/components/BlurImage";
-import { error } from "console"
+import { v4 as uuidv4 } from 'uuid';
+import withAuth from '@/components/withAuth';
 
 const formSchema = z.object({
   category_id: z.string().optional(),
@@ -58,7 +59,7 @@ export default function UploadModel() {
     const { data: modelImage, error: modelImageError } = await supabase
       .storage
       .from('images')
-      .upload(file.name, file, {
+      .upload(String(uuidv4()) +`/` + file.name, file, {
         upsert: false
       });
 
