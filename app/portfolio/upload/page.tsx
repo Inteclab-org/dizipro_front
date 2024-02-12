@@ -22,56 +22,122 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
-import { Checkbox } from "@/components/ui/checkbox";
 import { createClient } from "@/utils/supabase/client";
 import { useEffect, useState } from "react";
-import { ProjectType } from "@/components/Projects";
 import { Category } from "../page";
-import BlurImage from "@/components/BlurImage";
 import { v4 as uuidv4 } from 'uuid';
-import withAuth from '@/components/withAuth';
+import Image from "next/image"
+import { Check } from "lucide-react"
+import { cn } from "@/lib/utils"
+import Loader from "@/components/ui/loader";
 
 const formSchema = z.object({
-  category_id: z.string().optional(),
-  name: z.string({required_error: "Modal name is required"}),
-  project_id: z.string().optional(),
-  src: z.string({required_error: "Model picture is required"})
+  src: z.string({required_error: "Model picture is required"}).min(1, "Upload a model picture"),
+  category_id: z.string({required_error: "Category is required"}).min(1, "Choose a category"),
+  name: z.string().optional()
 })
 
 export default function UploadModel() {
   const supabase = createClient();
   const { toast } = useToast();
-  const [projects, setProjects] = useState<ProjectType[] | null>(null);
   const [categories, setCategories] = useState<Category[] | null>(null);
-  const [file, setFile] = useState<File | null>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [files, setFiles] = useState<FileList | null>(null);
+  const [mainFile, setMainFile] = useState<number>(0);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      category_id: "",
-      project_id: "",
+      name: "",
+      src: "",
+      category_id: ""
     },
   });
- 
-  async function onSubmit(values: z.infer<typeof formSchema>) {
-    if (!file) return;
 
+  const resetForm = function() {
+    setIsLoading(false);
+    form.reset();
+    setFiles(null);
+    setMainFile(0);
+    toast({
+      title: "Yay!",
+      description: "Successfully created!",
+    });
+  }
+
+  async function uploadModal(file: File, values: z.infer<typeof formSchema>, model: any, isLast: boolean = false) {
+    const imageFolder = uuidv4();
     const { data: modelImage, error: modelImageError } = await supabase
       .storage
       .from('images')
-      .upload(String(uuidv4()) +`/` + file.name, file, {
+      .upload(String(imageFolder) +`/` + file.name, file, {
         upsert: false
       });
 
     if (modelImage) {
-      const { error: modelError } = await supabase
+      const { data: modelData, error: modelError } = await supabase
         .from('projects')
         .insert({
           name: values.name,
           src: `/storage/v1/object/public/images/${modelImage.path}`,
-          ...(values.category_id ? {category_id: values.category_id} : {}),
-          ...(values.project_id ? {project_id: values.project_id} : {})
+          category_id: values.category_id,
+          ...(model?.id ? {project_id: model.id} : {})
+        }).select();
+      
+      if (modelError) {
+        toast({
+          title: "Uh oh! Something went wrong.",
+          description: modelError?.message,
+          variant: "destructive"
         });
+      }
+      console.log(model, isLast)
+      if (isLast) {
+        resetForm();
+      }
+    }
+    if (modelImageError) {
+      toast({
+        title: "Uh oh! Something went wrong.",
+        description: modelImageError?.message,
+        variant: "destructive"
+      });
+    }
+  }
+ 
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    if (!files) return;
+    if (!mainFile) {
+      return toast({
+        title: "Please, select a main modal!",
+        variant: "destructive"
+      });
+    }
+
+    setIsLoading(true);
+    const imageFolder = uuidv4();
+    let model:any = null;
+    const { data: modelImage, error: modelImageError } = await supabase
+      .storage
+      .from('images')
+      .upload(String(imageFolder) + `/` + files[mainFile - 1].name, files[mainFile - 1], {
+        upsert: false
+      });
+
+    if (modelImage) {
+      const { data: modelData, error: modelError } = await supabase
+        .from('projects')
+        .insert({
+          name: values.name,
+          src: `/storage/v1/object/public/images/${modelImage.path}`,
+          category_id: values.category_id,
+        }).select();
+
+      if (modelData) {
+        model = modelData[0];
+      }
+      
+
       if (modelError) {
         toast({
           title: "Uh oh! Something went wrong.",
@@ -87,12 +153,15 @@ export default function UploadModel() {
         variant: "destructive"
       });
     }
-  }
 
-  const getProjects =async () => {
-    const { data: projects, error } = await supabase.from('all_projects_view').select(`id, name, src, project_id, images`);
-    if (projects) {
-      setProjects(projects);
+    if(model) {
+      Array.from(files).forEach(async function(file, index) {
+        if (index + 1 !== mainFile) {
+          await uploadModal(file, values, model, (index + 1) === files.length);
+        } else if(index + 1 === files.length) {
+          resetForm();
+        }
+      })
     }
   }
 
@@ -112,7 +181,8 @@ export default function UploadModel() {
         Create model
       </h2>
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="py-[60px] px-[30px] border space-y-8">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="py-[60px] px-[30px] border space-y-8 relative">
+          {isLoading && <Loader />}
           <FormField
             control={form.control}
             name="src"
@@ -120,25 +190,35 @@ export default function UploadModel() {
               <FormItem>
                 <FormLabel>Picture*</FormLabel>
                 <FormControl>
-                  <Input placeholder="Model picture" type="file" {...field} onChange={(e) => {
-                    setFile(e.target.files && e.target.files[0]);
+                  <Input placeholder="Model picture" type="file" multiple {...field} onChange={(e) => {
+                    setFiles(e.target.files);
                     return field.onChange(e);
                   }} />
                 </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          <FormField
-            control={form.control}
-            name="name"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Name*</FormLabel>
-                <FormControl>
-                  <Input placeholder="Model name" {...field} />
-                </FormControl>
+                {files && <output className="p-2 border mt-4 flex items-center gap-4 overflow-x-auto">
+                  {Array.from(files).map((file: File, index) => (
+                    <Button
+                      key={`${file.name}-${index}`}
+                      className="upload-btn inline-block w-[calc(25%_-_1rem)] pb-[calc(25%_-_1rem)] h-0 relative bg-transparent hover:bg-transparent"
+                      onClick={() => setMainFile(index + 1)}
+                    >
+                      <Image
+                        className="w-full h-full object-contain border absolute left-0 top-0 p-2"
+                        src={URL.createObjectURL(file)}
+                        alt=""
+                        width={250}
+                        height={250}
+                      />
+                      <Button
+                        className={cn("upload-btn--check absolute leading-none border-[none] bg-[rgba(0,0,0,0.5)] p-[0.3rem] rounded-[50%] top-2 right-2",
+                          mainFile === (index + 1) ? "" : "hidden"
+                        )}
+                      >
+                        <Check className="w-5 h-5" />
+                      </Button>
+                    </Button>
+                  ))}
+                </output>}
                 <FormMessage />
               </FormItem>
             )}
@@ -149,9 +229,9 @@ export default function UploadModel() {
             name="category_id"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Category</FormLabel>
+                <FormLabel>Category*</FormLabel>
                 <FormControl>
-                  <Select onValueChange={field.onChange} defaultValue={field.value}>
+                  <Select onValueChange={field.onChange}>
                     <SelectTrigger>
                       <SelectValue placeholder="Select a category" />
                     </SelectTrigger>
@@ -170,63 +250,18 @@ export default function UploadModel() {
           />
 
           <FormField
-            name="isView"
-            render={() => (
-              <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4">
+            control={form.control}
+            name="name"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Name</FormLabel>
                 <FormControl>
-                  <Checkbox
-                    onCheckedChange={(checked: boolean) => {
-                      console.log(checked)
-                      if (checked && !projects) {
-                        getProjects();
-                      } else {
-                        setProjects(null);
-                      }
-                    }}
-                  />
+                  <Input placeholder="Model name" {...field} />
                 </FormControl>
-                <div className="space-y-1 leading-none">
-                  <FormLabel>
-                    Is it a model view?
-                  </FormLabel>
-                </div>
+                <FormMessage />
               </FormItem>
             )}
           />
-
-          {
-            projects && (
-              <FormField
-                control={form.control}
-                name="project_id"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Model</FormLabel>
-                    <FormControl>
-                      <Select onValueChange={field.onChange} defaultValue={field.value}>
-                        <SelectTrigger>
-                          <SelectValue placeholder="Select a model" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          {
-                            projects && projects.map((project: ProjectType) => (
-                              <SelectItem key={`project-item-${project.id}`} value={String(project.id)}>
-                                <div className="flex items-center gap-[25px]">
-                                  <BlurImage project={project} width={35} height={35} />
-                                  <span>{project.name}</span>
-                                </div>
-                              </SelectItem>
-                            ))
-                          }
-                        </SelectContent>
-                      </Select>
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-            )
-          }
 
           <Button type="submit">Submit</Button>
         </form>

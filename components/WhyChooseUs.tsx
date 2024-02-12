@@ -33,7 +33,7 @@ const benefits: BenefitType[] = [
 
 export default function WhyChooseUs() {
   return <>
-    <section className="flex flex-col max-w-[1140px] w-full mt-[36px] mb-[225px]">
+    <section className="flex flex-col max-w-[1140px] w-full mt-[36px] mb-[136px]">
       <motion.div initial="hidden" whileInView="visible" variants={fadeIn} viewport={{ once: true }} custom={0} >
         <h2 className="tracking-[-1.04px] leading-[68px] text-center uppercase font-semibold text-[52px] mb-[60px]">
           WHY CHOOSE US?

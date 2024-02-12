@@ -133,3 +133,8 @@
 .timeline::after {
   @apply absolute w-2.5 h-2.5 right-[-19.45px] overflow-hidden content-[""] border-l-[11px] border-l-[#6F00DE] border-y-[11px] border-y-transparent border-solid;
 }
+
+/* Upload styles */
+.upload-btn:hover .upload-btn--check {
+  display: flex;
+}
