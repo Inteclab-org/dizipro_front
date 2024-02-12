@@ -110,7 +110,7 @@ export default function SharedModal({
           </div>
 
           {navigation && (
-            <div className="fixed inset-x-0 bottom-0 overflow-hidden bg-gradient-to-b from-black/0 to-black/60">
+            <div className="fixed inset-x-0 bottom-0 overflow-hidden">
               <motion.div
                 initial={false}
                 className="mx-auto mt-6 mb-6 flex aspect-[3/2] h-14"
