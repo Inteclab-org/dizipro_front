@@ -27,7 +27,7 @@ import { useEffect, useState } from "react";
 import { Category } from "../page";
 import { v4 as uuidv4 } from 'uuid';
 import Image from "next/image"
-import { Check } from "lucide-react"
+import { Check, Repeat } from "lucide-react"
 import { cn } from "@/lib/utils"
 import Loader from "@/components/ui/loader";
 
@@ -42,7 +42,7 @@ export default function UploadModel() {
   const { toast } = useToast();
   const [categories, setCategories] = useState<Category[] | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [files, setFiles] = useState<FileList | null>(null);
+  const [files, setFiles] = useState<File[] | null>(null);
   const [mainFile, setMainFile] = useState<number>(0);
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -155,7 +155,7 @@ export default function UploadModel() {
     }
 
     if(model) {
-      Array.from(files).forEach(async function(file, index) {
+      files.forEach(async function(file, index) {
         if (index + 1 !== mainFile) {
           await uploadModal(file, values, model, (index + 1) === files.length);
         } else if(index + 1 === files.length) {
@@ -199,16 +199,18 @@ export default function UploadModel() {
                       });
                       return;
                     }
-                    setFiles(e.target.files);
+                    if (e.target.files) {
+                      const newFiles: File[] = Array.from(e.target.files);
+                      setFiles(newFiles);
+                    }
                     return field.onChange(e);
                   }} />
                 </FormControl>
                 {files && <output className="p-2 border mt-4 flex items-center gap-4 overflow-x-auto">
-                  {Array.from(files).map((file: File, index) => (
-                    <Button
+                  {files.map((file: File, index) => (
+                    <div
                       key={`${file.name}-${index}`}
-                      className="upload-btn inline-block w-[calc(25%_-_1rem)] pb-[calc(25%_-_1rem)] h-0 relative bg-transparent hover:bg-transparent"
-                      onClick={() => setMainFile(index + 1)}
+                      className="upload-btn inline-block w-[20%] pb-[20%] h-0 relative bg-transparent hover:bg-transparent"
                     >
                       <Image
                         className="w-full h-full object-contain border absolute left-0 top-0 p-2"
@@ -221,10 +223,32 @@ export default function UploadModel() {
                         className={cn("upload-btn--check absolute leading-none border-[none] bg-[rgba(0,0,0,0.5)] p-[0.3rem] rounded-[50%] top-2 right-2",
                           mainFile === (index + 1) ? "" : "hidden"
                         )}
+                        type="button"
+                        onClick={() => setMainFile(index + 1)}
                       >
                         <Check className="w-5 h-5" />
                       </Button>
-                    </Button>
+                      <Button
+                        className={cn("upload-btn--replace hidden absolute leading-none border-[none] bg-[rgba(0,0,0,0.5)] p-[0.3rem] rounded-[50%] bottom-2 right-2",
+                        )}
+                        type="button"
+                      >
+                        <Repeat className="w-5 h-5" />
+                        <input
+                          type="file"
+                          title="Replace"
+                          className="absolute opacity-0 text-right right-0 top-0"
+                          onChange={(evt) => {
+                            if (evt.target?.files) {
+                              const newFile: File = evt.target.files[0];
+                              const newFiles: File[] = Array.from(files);
+                              newFiles[index] = newFile;
+                              setFiles(newFiles);
+                            }
+                          }}
+                        />
+                      </Button>
+                    </div>
                   ))}
                 </output>}
                 <FormMessage />

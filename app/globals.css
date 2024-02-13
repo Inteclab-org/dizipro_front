@@ -135,6 +135,11 @@
 }
 
 /* Upload styles */
-.upload-btn:hover .upload-btn--check {
+.upload-btn:hover .upload-btn--check, .upload-btn:hover .upload-btn--replace {
   display: flex;
+}
+
+.upload-btn--replace input {
+  -moz-opacity: 0;
+  filter: alpha(opacity:0);
 }
