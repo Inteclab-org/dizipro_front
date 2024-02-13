@@ -51,10 +51,11 @@ export default function Portfolio() {
   const fetchData = async (page: number) => {
     try {
       const query = category
-        ? supabase.from('category_projects_view').select(`id, name, src, project_id, images`).eq('category_id', category).is('project_id', null)
-        : supabase.from('all_projects_view').select(`id, name, src, project_id, images`);
+        ? supabase.from('category_projects_view').select(`id, name, src, project_id, images`, { count: "exact" }).eq('category_id', category).is('project_id', null).order('id')
+        : supabase.from('all_projects_view').select(`id, name, src, project_id, images`, { count: "exact" }).order('id');
 
       const { data: projectsData, count } = await query.range((page - 1) * limit, page * limit - 1).limit(limit).order('id', { ascending: true });
+      console.log(projectsData, count)
       if (projectsData) {
         setProjects(projectsData);
       }
@@ -87,7 +88,8 @@ export default function Portfolio() {
             className="border-b-[3px] py-3 px-5 rounded-none border-border/10 font-bold leading-[140%] tracking-[-0.18px] text-[18px] transition-colors hover:border-border/30 data-[state=active]:shadow-none data-[state=active]:text-primary data-[state=active]:border-primary"
             onClick={() => {
               console.log("category click", null)
-              setCategory(null)
+              setCategory(null);
+              handlePageChange(1);
             }}
           >
             All models
@@ -101,6 +103,7 @@ export default function Portfolio() {
                 onClick={() => {
                   console.log("category click", tab.id)
                   setCategory(tab.id);
+                  handlePageChange(1);
                 }}
               >
                 {tab.name}
@@ -124,7 +127,7 @@ export default function Portfolio() {
           {
             Array.from({ length: totalPages }).map((_, index) => (
               <PaginationItem key={`pagination-itam-${index}`}>
-                <PaginationLink className={`${index + 1 === currentPage ? ' border-border/90' : ''}`} isActive={index + 1 === currentPage} onClick={(evt) => {
+                <PaginationLink className={`${index + 1 === currentPage ? ' border-border/90' : 'bg-transparent'}`} isActive={index + 1 === currentPage} onClick={(evt) => {
                   evt.preventDefault();
                   handlePageChange(index + 1);
                 }}>

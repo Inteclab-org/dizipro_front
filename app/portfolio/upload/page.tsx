@@ -167,7 +167,7 @@ export default function UploadModel() {
 
   useEffect(() => {
     const getCategories = async () => {
-      const { data: categories } = await supabase.from('categories').select('*');
+      const { data: categories } = await supabase.from('categories').select('*').order('id');
       if (categories) {
         setCategories(categories);
       }
