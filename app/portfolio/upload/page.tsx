@@ -65,7 +65,7 @@ export default function UploadModel() {
     });
   }
 
-  async function uploadModal(file: File, values: z.infer<typeof formSchema>, model: any, isLast: boolean = false) {
+  async function uploadModal(file: File, values: z.infer<typeof formSchema>, model: any, id: number) {
     const imageFolder = uuidv4();
     const { data: modelImage, error: modelImageError } = await supabase
       .storage
@@ -78,6 +78,7 @@ export default function UploadModel() {
       const { error: modelError } = await supabase
         .from('projects')
         .insert({
+          id: id,
           name: values.name,
           src: `/storage/v1/object/public/images/${modelImage.path}`,
           category_id: values.category_id,
@@ -90,10 +91,6 @@ export default function UploadModel() {
           description: modelError?.message,
           variant: "destructive"
         });
-      }
-      console.log(model, isLast)
-      if (isLast) {
-        resetForm();
       }
     }
     if (modelImageError) {
@@ -155,13 +152,20 @@ export default function UploadModel() {
     }
 
     if(model) {
-      files.forEach(async function(file, index) {
-        if (index + 1 !== mainFile) {
-          await uploadModal(file, values, model, (index + 1) === files.length);
-        } else if(index + 1 === files.length) {
+      let views = files;
+      views.splice(mainFile - 1, 1);
+      console.log(mainFile, views)
+      let itemsProcessed = 0;
+
+      for (const file of views) {
+        itemsProcessed++;
+        uploadModal(file, values, model, model.id + itemsProcessed);
+        
+        if(itemsProcessed === views.length) {
+          console.log("Reset from here")
           resetForm();
         }
-      })
+      }
     }
   }
 
@@ -187,7 +191,7 @@ export default function UploadModel() {
             control={form.control}
             name="src"
             render={({ field }) => (
-              <FormItem>
+              <FormItem className="!mt-0">
                 <FormLabel>Picture*</FormLabel>
                 <FormControl>
                   <Input placeholder="Model picture" type="file" multiple {...field} onChange={(e) => {
@@ -202,6 +206,7 @@ export default function UploadModel() {
                     if (e.target.files) {
                       const newFiles: File[] = Array.from(e.target.files);
                       setFiles(newFiles);
+                      console.log(newFiles)
                     }
                     return field.onChange(e);
                   }} />
