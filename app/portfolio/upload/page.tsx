@@ -65,7 +65,7 @@ export default function UploadModel() {
     });
   }
 
-  async function uploadModal(file: File, values: z.infer<typeof formSchema>, model: any, id: number) {
+  async function uploadModal(file: File, values: z.infer<typeof formSchema>, model: any) {
     const imageFolder = uuidv4();
     const { data: modelImage, error: modelImageError } = await supabase
       .storage
@@ -78,7 +78,6 @@ export default function UploadModel() {
       const { error: modelError } = await supabase
         .from('projects')
         .insert({
-          id: id,
           name: values.name,
           src: `/storage/v1/object/public/images/${modelImage.path}`,
           category_id: values.category_id,
@@ -158,7 +157,7 @@ export default function UploadModel() {
 
       for (const file of views) {
         itemsProcessed++;
-        uploadModal(file, values, model, model.id + itemsProcessed);
+        await uploadModal(file, values, model);
         
         if(itemsProcessed === views.length) {
           console.log("Reset from here")
