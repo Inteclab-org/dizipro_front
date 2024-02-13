@@ -75,14 +75,14 @@ export default function UploadModel() {
       });
 
     if (modelImage) {
-      const { data: modelData, error: modelError } = await supabase
+      const { error: modelError } = await supabase
         .from('projects')
         .insert({
           name: values.name,
           src: `/storage/v1/object/public/images/${modelImage.path}`,
           category_id: values.category_id,
           ...(model?.id ? {project_id: model.id} : {})
-        }).select();
+        });
       
       if (modelError) {
         toast({
@@ -191,6 +191,14 @@ export default function UploadModel() {
                 <FormLabel>Picture*</FormLabel>
                 <FormControl>
                   <Input placeholder="Model picture" type="file" multiple {...field} onChange={(e) => {
+                    if (e.target.files && e.target.files.length > 5) {
+                      toast({
+                        title: "Uh oh! Something went wrong.",
+                        description: "A maximum of 5 files are allowed",
+                        variant: "destructive"
+                      });
+                      return;
+                    }
                     setFiles(e.target.files);
                     return field.onChange(e);
                   }} />
