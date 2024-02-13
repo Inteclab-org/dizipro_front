@@ -136,7 +136,6 @@ export default function UploadModel() {
       if (modelData) {
         model = modelData[0];
       }
-      
 
       if (modelError) {
         toast({
