@@ -15,8 +15,8 @@ const defaultUrl = process.env.VERCEL_URL
 
 export const metadata = {
   metadataBase: new URL(defaultUrl),
-  title: "Next.js and Supabase Starter Kit",
-  description: "The fastest way to build apps with Next.js and Supabase",
+  title: "WE MAKE HIGH QUALITY 3D MODELS FOR YOU",
+  description: "Dizipro crafts top-notch 3D models online, powered by our skilled freelance team.",
 };
 
 export const viewport: Viewport = {
