@@ -42,7 +42,7 @@ export default function Portfolio() {
 
   useEffect(() => {
     const getData = async () => {
-      const { data: categories } = await supabase.from('categories').select('*');
+      const { data: categories } = await supabase.from('categories').select('*').order('id');
       setTabs(categories);
     }
     getData();
@@ -51,10 +51,10 @@ export default function Portfolio() {
   const fetchData = async (page: number) => {
     try {
       const query = category
-        ? supabase.from('category_projects_view').select(`id, name, src, project_id, images`, { count: "exact" }).eq('category_id', category).is('project_id', null).order('id')
-        : supabase.from('all_projects_view').select(`id, name, src, project_id, images`, { count: "exact" }).order('id');
+        ? supabase.from('category_projects_view').select(`id, name, src, project_id, images`, { count: "exact" }).eq('category_id', category).is('project_id', null)
+        : supabase.from('all_projects_view').select(`id, name, src, project_id, images`, { count: "exact" });
 
-      const { data: projectsData, count } = await query.range((page - 1) * limit, page * limit - 1).limit(limit).order('id', { ascending: true });
+      const { data: projectsData, count } = await query.range((page - 1) * limit, page * limit - 1).limit(limit).order('id', { ascending: false });
       console.log(projectsData, count)
       if (projectsData) {
         setProjects(projectsData);

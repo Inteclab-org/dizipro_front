@@ -73,9 +73,9 @@ export default function SharedModal({
                 src={`${STORAGE_URL}${currentProject.src}`}
                 width={708}
                 height={708}
-                priority
                 alt={currentProject.name}
                 className="w-full h-full object-contain"
+                loading="eager"
               />
             </motion.div>
           </AnimatePresence>

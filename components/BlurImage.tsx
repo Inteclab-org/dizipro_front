@@ -7,17 +7,17 @@ type BlurImageProps = {
   project: ProjectType,
   width?: number,
   height?: number,
-  className?: string
+  className?: string,
+  isImportant?: boolean
 }
 
-export default function BlurImage(props: BlurImageProps) {
-  const {project, width, height} = props;
+export default function BlurImage({project, width, height, className, isImportant = false}: BlurImageProps) {
   const STORAGE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const [isLoading, setLoading] = useState(true);
 
   return (
     <Image
-      loading="eager"
+      loading={isImportant ? "eager" : "lazy"}
       alt={project.name}
       src={`${STORAGE_URL}${project.src}`}
       width={width}
@@ -27,7 +27,7 @@ export default function BlurImage(props: BlurImageProps) {
         isLoading
           ? 'grayscale blur-2xl scale-110'
           : 'grayscale-0 blur-0 scale-100',
-        props.className
+        className
       )}
       onLoad={() => setLoading(false)}
     />
