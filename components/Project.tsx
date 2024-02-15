@@ -29,7 +29,6 @@ export default function Project({project}: ProjectProps) {
           index={projectId}
           changePhotoId={(index: number) => setProjectId(index)}
           currentPhoto={project}
-          navigation={true}
           direction={-1}
         />
       </DialogContent>
