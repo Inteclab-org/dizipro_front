@@ -23,7 +23,7 @@ export default function BlurImage({project, width, height, className, isImportan
       width={width}
       height={height}
       className={cn(
-        'object-contain group-hover:opacity-75 duration-700 ease-in-out',
+        'object-contain group-hover:opacity-75 duration-700 ease-in-out w-full h-full',
         isLoading
           ? 'grayscale blur-2xl scale-110'
           : 'grayscale-0 blur-0 scale-100',
