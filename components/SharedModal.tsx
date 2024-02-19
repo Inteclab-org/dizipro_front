@@ -93,7 +93,10 @@ export default function SharedModal({
                   className="absolute -left-[230px] top-[calc(50%-16px)] rounded-2 bg-white/50 p-3 backdrop-blur-[2px] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.10)] transition hover:bg-white/75 focus:outline-none"
                   style={{ transform: "translate3d(0, 0, 0)" }}
                   onClick={() => {
-                    changePhotoId(index - 1);
+                    if (currentPhoto.images) {
+                      setCurrentProject(currentPhoto.images[currentIndex - 1]);
+                      setCurrentIndex((prevIndex) => prevIndex - 1);
+                    }
                   }}
                 >
                   <Arrow className="w-8 h-8" />
@@ -103,7 +106,12 @@ export default function SharedModal({
                 <button
                   className="absolute -right-[230px] top-[calc(50%-16px)] rounded-2 bg-white/50 p-3 backdrop-blur-[2px] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.10)] transition hover:bg-white/75 focus:outline-none"
                   style={{ transform: "translate3d(0, 0, 0)" }}
-                  onClick={() => changePhotoId(index + 1)}
+                  onClick={() => {
+                    if (currentPhoto.images) {
+                      setCurrentProject(currentPhoto.images[currentIndex + 1]);
+                      setCurrentIndex((prevIndex) => prevIndex + 1);
+                    }
+                  }}
                 >
                   <Arrow className="w-8 h-8 -rotate-180" />
                 </button>
