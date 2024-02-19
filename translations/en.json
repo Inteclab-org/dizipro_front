@@ -1,7 +1,16 @@
 {
-  "nav": {
+  "header": {
+    "navbar": {
+      "navbar-item-1": "How it works",
+      "navbar-item-2": "Our portfolio",
+      "navbar-item-3": "Support"
+      
+    },
     "locale-selector": {
       "message": "Choose a language."
+    },
+    "order-btn": {
+      "message": "Order"
     }
   },
   "views": {

@@ -41,7 +41,6 @@ type Props = {
 
 export default async function RootLayout({ children, params }: Props) {
   const translation = await getTranslation(params.locale);
-  console.log("locale", params.locale)
 
   return (
     <html lang="en" className={GeistSans.className}>
@@ -53,7 +52,7 @@ export default async function RootLayout({ children, params }: Props) {
       </Head>
       <body className="w-full min-h-screen flex flex-col items-center">
         <NextTopLoader />
-        <Header translation={translation} />
+        <Header translation={translation} locale={params.locale} />
         {children}
         <PartnerWithUs />
         <Footer />
