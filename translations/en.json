@@ -6,17 +6,12 @@
       "navbar-item-3": "Support"
       
     },
-    "locale-selector": {
-      "message": "Choose a language."
-    },
     "order-btn": {
       "message": "Order"
     }
   },
-  "views": {
-    "home": {
-      "title": "Hello world!",
-      "body": "This site should be now in English, you should be able to read this text, if you understand English."
-    }
+  "hero": {
+    "title": "<span>We make </span><span className='text-white bg-primary'>high</span><span> quality 3D models for you</span>",
+    "body": "This site should be now in English, you should be able to read this text, if you understand English."
   }
 }
