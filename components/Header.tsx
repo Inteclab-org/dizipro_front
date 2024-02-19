@@ -11,8 +11,13 @@ import {
 } from "@/components/ui/dialog";
 import TelegramBig from "./icons/TelegramBig";
 import WhatsUp from "./icons/WhatsUp";
+import { TranslationObejct } from "@/lib/i18n/loadTranslation";
 
-export default function Header() {
+interface Props {
+  translation: TranslationObejct;
+}
+
+export default function Header({ translation }: Props) {
   return (
     <>
       <header className="max-w-[1200px] w-full flex items-center justify-between gap-[40px] pt-[32px] pb-[16px] border-b-[1px] border-border/20">
