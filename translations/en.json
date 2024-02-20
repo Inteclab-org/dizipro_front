@@ -11,7 +11,14 @@
     }
   },
   "hero": {
-    "title": "<span>We make </span><span className='text-white bg-primary'>high</span><span> quality 3D models for you</span>",
-    "body": "This site should be now in English, you should be able to read this text, if you understand English."
+    "title": {
+      "firstPart": "We make ",
+      "mainPart": "high",
+      "lastPart": " quality 3D models for you"
+    },
+    "body": "Dizipro crafts top-notch 3D models online, powered by our skilled freelance team.",
+    "start-btn": {
+      "message": "Start now"
+    }
   }
 }

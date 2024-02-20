@@ -47,7 +47,9 @@ export default function Header({ translation, locale }: Props) {
           <div className="flex gap-[40px]">
             <LocaleSelector params={{locale: locale}} />
             <DialogTrigger>
-              <Button>Order</Button>
+              <Button>
+                {translation('header.order-btn.message')}
+              </Button>
             </DialogTrigger>
           </div>
           <DialogContent className="max-w-[360px] w-full sm:rounded-none">
