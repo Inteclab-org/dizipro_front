@@ -57,7 +57,10 @@ export default async function Index({ params }: Props) {
         title={translation("how-it-works.title")}
         timeline={timeline}
       />
-      <OurWork />
+      <OurWork
+        title={translation("our-work.title")}
+        buttonMessage={translation("our-work.show-btn.message")}
+      />
       <WhyChooseUs />
       <Programs />
     </>
