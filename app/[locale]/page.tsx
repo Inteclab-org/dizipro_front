@@ -7,8 +7,7 @@ import { Locale } from "@/i18n";
 import getTranslation from "@/lib/i18n/getTranslation";
 import { TimelineItemProps } from "@/components/TimelineItem";
 
-type Props = {
-  children: React.ReactNode;
+interface Props {
   params: {
     locale: Locale;
   };
