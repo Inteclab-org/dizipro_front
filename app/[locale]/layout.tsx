@@ -59,7 +59,7 @@ export default async function RootLayout({ children, params }: Props) {
           body={translation("partner-with-us.body")}
           buttonMessage={translation("partner-with-us.start-btn.message")}
         />
-        <Footer />
+        <Footer translation={translation} />
         <Toaster />
         <Script
           defer

@@ -68,5 +68,9 @@
     "start-btn": {
       "message":"Start now"
     }
+  },
+  "footer": {
+    "contact-us": "Contact Us",
+    "copyright": "XK MCHJ «Dizipro»"
   }
 }
