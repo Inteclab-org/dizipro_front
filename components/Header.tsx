@@ -27,7 +27,7 @@ export default function Header({ translation, locale }: Props) {
         <Dialog>
         <div className="max-w-[55%] w-full flex items-center justify-between gap-[40px]">
           <nav className="flex items-center shrink-0 gap-[42px] leading-[24px]">
-            <Link href="/#how-it-works">
+            <Link href={`/${locale}/#how-it-works`}>
               {translation('header.navbar.navbar-item-1')}
             </Link>
             <Link href="/portfolio">
