@@ -152,7 +152,6 @@ export default function UploadModel() {
     if(model) {
       let views = files;
       views.splice(mainFile - 1, 1);
-      console.log(mainFile, views)
       let itemsProcessed = 0;
 
       for (const file of views) {
@@ -160,7 +159,6 @@ export default function UploadModel() {
         await uploadModal(file, values, model);
         
         if(itemsProcessed === views.length) {
-          console.log("Reset from here")
           resetForm();
         }
       }
@@ -204,7 +202,6 @@ export default function UploadModel() {
                     if (e.target.files) {
                       const newFiles: File[] = Array.from(e.target.files);
                       setFiles(newFiles);
-                      console.log(newFiles)
                     }
                     return field.onChange(e);
                   }} />
