@@ -61,5 +61,12 @@
   },
   "programs-we-use": {
     "title": "Programs we use"
+  },
+  "partner-with-us": {
+    "title": "Partner with us",
+    "body": "Get outstanding 3D models made just for you by our expert team. Enjoy high-quality designs created with care by our professionals.",
+    "start-btn": {
+      "message":"Start now"
+    }
   }
 }

@@ -54,7 +54,11 @@ export default async function RootLayout({ children, params }: Props) {
         <NextTopLoader />
         <Header translation={translation} locale={params.locale} />
         {children}
-        <PartnerWithUs />
+        <PartnerWithUs
+          title={translation("partner-with-us.title")}
+          body={translation("partner-with-us.body")}
+          buttonMessage={translation("partner-with-us.start-btn.message")}
+        />
         <Footer />
         <Toaster />
         <Script

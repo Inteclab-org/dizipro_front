@@ -16,7 +16,13 @@ import TelegramBig from "./icons/TelegramBig";
 import WhatsUp from "./icons/WhatsUp";
 import Link from "next/link";
 
-export default function PartnerWithUs() {
+export default function PartnerWithUs({
+  title, body, buttonMessage
+}: {
+  title: string;
+  body: string;
+  buttonMessage: string;
+}) {
   return (
     <section className="w-full flex items-center justify-center bg-secondary/30">
       <div className="max-w-[918px] w-full py-[55px] flex justify-end relative">
@@ -28,29 +34,26 @@ export default function PartnerWithUs() {
           height={392}
         />
         <div className="max-w-[479px] flex flex-col items-start gap-[12px]">
-          <motion.div
+          <motion.h2
             initial="hidden"
             whileInView="visible"
             variants={fadeIn}
             viewport={{ once: true }}
             custom={0}
+            className="text-[36px] tracking-[-0.72px] leading-[50px] uppercase font-semibold"
           >
-            <h2 className="text-[36px] tracking-[-0.72px] leading-[50px] uppercase font-semibold">
-              Partner with us
-            </h2>
-          </motion.div>
-          <motion.div
+            {title}
+          </motion.h2>
+          <motion.p
             initial="hidden"
             whileInView="visible"
             variants={fadeIn}
             viewport={{ once: true }}
             custom={1}
+            className="w-full text-[20px] tracking-[-0.2px] leading-[30px] mb-[18px]"
           >
-            <p className="w-full text-[20px] tracking-[-0.2px] leading-[30px] mb-[18px]">
-              Get outstanding 3D models made just for you by our expert team.
-              Enjoy high-quality designs created with care by our professionals.
-            </p>
-          </motion.div>
+            {body}
+          </motion.p>
 
           {/* Order modal */}
           <Dialog>
@@ -62,7 +65,9 @@ export default function PartnerWithUs() {
                 viewport={{ once: true }}
                 custom={2}
               >
-                <Button variant="secondary">Start now</Button>
+                <Button variant="secondary">
+                  {buttonMessage}
+                </Button>
               </motion.div>
             </DialogTrigger>
             <DialogContent className="max-w-[360px] w-full sm:rounded-none">
