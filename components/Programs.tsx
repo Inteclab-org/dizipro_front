@@ -4,11 +4,15 @@ import { cn, fadeIn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import Image from "next/image";
 
-export default function Programs() {
+export default function Programs({
+  title
+}: {
+  title: string
+}) {
   return <>
     <section className="max-w-[1140px] w-full text-center mt-[36px] mb-[225px]">
       <motion.h2 initial="hidden" whileInView="visible" variants={fadeIn} viewport={{ once: true }} custom={0} className="tracking-[-1.04px] leading-[68px] uppercase font-semibold text-[52px] mb-[78px]">
-        Programs we use
+        {title}
       </motion.h2>
       <ul className="grid grid-cols-[repeat(3,_minmax(380px,_1fr))]">
         {

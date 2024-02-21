@@ -89,7 +89,7 @@ export default async function Index({ params }: Props) {
         buttonMessage={translation("our-work.show-btn.message")}
       />
       <WhyChooseUs title={translation("why-choose-us.title")} benefits={benefits} />
-      <Programs />
+      <Programs title={translation("programs-we-use.title")} />
     </>
   );
 }
