@@ -1,11 +1,15 @@
 import Hero from "@/components/Hero";
 import HowItWorks from "@/components/HowItWorks";
 import OurWork from "@/components/OurWork";
-import WhyChooseUs from "@/components/WhyChooseUs";
+import WhyChooseUs, { BenefitType } from "@/components/WhyChooseUs";
 import Programs from "@/components/Programs";
 import { Locale } from "@/i18n";
 import getTranslation from "@/lib/i18n/getTranslation";
 import { TimelineItemProps } from "@/components/TimelineItem";
+import Click from "@/components/icons/Click";
+import Message from "@/components/icons/Message";
+import Price from "@/components/icons/Price";
+import Check from "@/components/icons/Check";
 
 interface Props {
   params: {
@@ -42,6 +46,29 @@ export default async function Index({ params }: Props) {
     }
   ];
 
+  const benefits: BenefitType[] = [
+    {
+      title: translation("why-choose-us.benefits.item-1.title"),
+      text: translation("why-choose-us.benefits.item-1.body"),
+      icon: <Check className="h-8 w-8 shrink-0" />,
+    },
+    {
+      title: translation("why-choose-us.benefits.item-2.title"),
+      text: translation("why-choose-us.benefits.item-2.body"),
+      icon: <Price className="h-8 w-8 shrink-0" />,
+    },
+    {
+      title: translation("why-choose-us.benefits.item-3.title"),
+      text: translation("why-choose-us.benefits.item-3.body"),
+      icon: <Click className="h-8 w-8 shrink-0" />,
+    },
+    {
+      title: translation("why-choose-us.benefits.item-4.title"),
+      text: translation("why-choose-us.benefits.item-4.body"),
+      icon: <Message className="h-8 w-8 shrink-0" />,
+    },
+  ];
+
   return (
     <>
       <Hero
@@ -61,7 +88,7 @@ export default async function Index({ params }: Props) {
         title={translation("our-work.title")}
         buttonMessage={translation("our-work.show-btn.message")}
       />
-      <WhyChooseUs />
+      <WhyChooseUs title={translation("why-choose-us.title")} benefits={benefits} />
       <Programs />
     </>
   );

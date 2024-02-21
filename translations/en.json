@@ -37,5 +37,26 @@
     "show-btn": {
       "message": "Show all"
     }
+  },
+  "why-choose-us": {
+    "title": "WHY CHOOSE US?",
+    "benefits": {
+      "item-1": {
+        "title": "Custom Creations",
+        "body": "Receive tailor-made, precise, and top-quality 3D models and environments, crafted to your specifications."
+      },
+      "item-2": {
+        "title": "Competitive Pricing",
+        "body": "Access custom 3D model creation services at unbeatable rates, ensuring value without compromising on quality."
+      },
+      "item-3": {
+        "title": "User-Friendly Service",
+        "body": "Our streamlined process simplifies ordering and ensures a seamless experience from start to completion."
+      },
+      "item-4": {
+        "title": "Skilled Professionals",
+        "body": "Our talented freelancers offer personalized support and expertise, enriching your project with their experience."
+      }
+    }
   }
 }
