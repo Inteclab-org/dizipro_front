@@ -9,8 +9,6 @@ import Arrow from "./icons/Arrow";
 import { useState } from "react";
 
 export default function SharedModal({
-  index,
-  changePhotoId,
   currentPhoto,
   direction,
 }: SharedModalProps) {
@@ -56,7 +54,7 @@ export default function SharedModal({
       }}
     >
       <div
-        className="relative flex aspect-[3/2.75] w-full max-w-[1280px] items-center h-auto"
+        className="relative flex aspect-[3/2.75] w-full max-w-[708px] items-center h-auto"
         {...handlers}
       >
         {/* Main image */}
@@ -69,14 +67,14 @@ export default function SharedModal({
               initial="enter"
               animate="center"
               exit="exit"
-              className="absolute w-full h-full"
+              className="absolute w-full h-full flex items-center justify-center"
             >
               <Image
                 src={`${STORAGE_URL}${currentProject.src}`}
                 width={708}
                 height={708}
                 alt={currentProject.name}
-                className="w-full h-full object-contain"
+                className="object-contain"
                 loading="eager"
               />
             </motion.div>
@@ -174,8 +172,6 @@ export default function SharedModal({
 }
 
 export interface SharedModalProps {
-  index: number;
   currentPhoto: ProjectType;
-  changePhotoId: (index: number) => void;
   direction?: number;
 }

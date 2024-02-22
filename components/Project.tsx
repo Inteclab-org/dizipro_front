@@ -6,15 +6,12 @@ import {
 import { ProjectType } from "./Projects";
 import BlurImage from "./BlurImage";
 import SharedModal from "./SharedModal";
-import { useState } from "react";
 
 type ProjectProps = {
   project: ProjectType,
 }
 
 export default function Project({project}: ProjectProps) {
-  const [projectId, setProjectId] = useState(project.id);
-
   return (
     <Dialog>
       <DialogTrigger>
@@ -26,8 +23,6 @@ export default function Project({project}: ProjectProps) {
       </DialogTrigger>
       <DialogContent className="max-w-[708px] w-full border-0 sm:rounded-none p-0">
         <SharedModal
-          index={projectId}
-          changePhotoId={(index: number) => setProjectId(index)}
           currentPhoto={project}
           direction={-1}
         />
