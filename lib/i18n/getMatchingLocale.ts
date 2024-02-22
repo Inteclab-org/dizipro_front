@@ -18,7 +18,7 @@ export function getMatchingLocale(request: NextRequest): Locale {
   );
 
   // Get all availabl locales from the client.
-  const clientLocales = new Negotiator({ headers: userHeaders }).languages().sort();
+  const clientLocales = new Negotiator({ headers: userHeaders }).languages();
 
   // Initialize app/server locales object.
   let appLocales: Locale[] = [];

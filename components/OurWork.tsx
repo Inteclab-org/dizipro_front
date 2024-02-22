@@ -7,15 +7,18 @@ import { useEffect, useState } from "react";
 import { createClient } from "@/utils/supabase/client";
 import { fadeIn } from "@/lib/utils";
 import { motion } from "framer-motion";
+import { Locale } from "@/i18n";
 
 type Props = {
   title: string;
   buttonMessage: string;
+  locale: Locale;
 }
 
 export default function OurWork({
   title,
-  buttonMessage
+  buttonMessage,
+  locale
 }: Props) {
   const supabase = createClient();
   const [projects, setProjects] = useState<ProjectType[] | null>(null);
@@ -41,7 +44,7 @@ export default function OurWork({
     <Projects data={projects} />
     <motion.div className="max-w-[250px] w-full" initial="hidden" whileInView="visible" variants={fadeIn} viewport={{ once: true }} custom={1} >
       <Button variant="outline" asChild>
-        <Link href="/portfolio">{
+        <Link href={`/${locale}/portfolio`}>{
           buttonMessage
         }</Link>
       </Button>

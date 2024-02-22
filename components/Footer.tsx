@@ -3,16 +3,19 @@ import { memo } from "react";
 import Logo from "./icons/Logo";
 import Mail from "./icons/Mail";
 import { TranslationObejct } from "@/lib/i18n/loadTranslation";
+import { Locale } from "@/i18n";
 
 const Footer = memo(({
-  translation
+  translation,
+  locale
 }: {
-  translation: TranslationObejct
+  translation: TranslationObejct;
+  locale: Locale;
 }) => {
   return (
     <footer className="max-w-[1112px] w-full pt-[41px] pb-[12px] flex flex-col gap-[32px] leading-[22px]">
         <div className="flex items-start justify-between gap-[40px]">
-          <Link href="/">
+          <Link href={`/${locale}/`}>
             <Logo className="shrink-0" />
           </Link>
           <div className="flex flex-col gap-[13px]">

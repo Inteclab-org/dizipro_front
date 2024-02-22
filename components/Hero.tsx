@@ -6,15 +6,9 @@ import { Button } from "./ui/button";
 import { motion } from "framer-motion";
 import {
   Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import Link from "next/link";
-import TelegramBig from "./icons/TelegramBig";
-import WhatsUp from "./icons/WhatsUp";
+import ContactDialog, { ContactDialogProps } from "./ContactDialog";
 
 export type HeroTitleProps = {
   firstPart: string;
@@ -26,9 +20,10 @@ interface Props {
   title: HeroTitleProps;
   body: string;
   buttonMessage: string;
+  dialog: ContactDialogProps;
 }
 
-export default function Hero({title, body, buttonMessage}: Props) {
+export default function Hero({title, body, buttonMessage, dialog}: Props) {
   return (
     <>
       <section className="max-w-[1440px] w-full flex flex-col items-center justify-center pt-[60px] pb-[100px] gap-[80px]">
@@ -56,7 +51,6 @@ export default function Hero({title, body, buttonMessage}: Props) {
             {body}
           </motion.p>
 
-          {/* Order modal */}
           <Dialog>
             <DialogTrigger asChild>
               <motion.div
@@ -71,33 +65,7 @@ export default function Hero({title, body, buttonMessage}: Props) {
                 </Button>
               </motion.div>
             </DialogTrigger>
-            <DialogContent className="max-w-[360px] w-full sm:rounded-none">
-              <DialogHeader className="mb-[26px]">
-                <DialogTitle className="tracking-[-0.6px] leading-[36px] font-medium text-[30px]">
-                  Choose
-                </DialogTitle>
-                <DialogDescription className="text-foreground/65 text-base leading-[130%] tracking-[-0.32px]">
-                  Through which messanger do you want to discuss and order a
-                  project?
-                </DialogDescription>
-              </DialogHeader>
-              <div className="flex gap-2">
-                <Link
-                  className="p-4 bg-muted"
-                  href="https://t.me/dizipro_order"
-                  target="_blank"
-                >
-                  <TelegramBig className="w-[112px] h-[112px]" />
-                </Link>
-                <Link
-                  className="p-4 bg-muted"
-                  href="https://wa.me/998906666660"
-                  target="_blank"
-                >
-                  <WhatsUp className="w-[112px] h-[112px]" />
-                </Link>
-              </div>
-            </DialogContent>
+            <ContactDialog {...dialog} />
           </Dialog>
         </div>
         <HeroCarousel />

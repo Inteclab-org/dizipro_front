@@ -6,22 +6,17 @@ import { fadeIn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import {
   Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import TelegramBig from "./icons/TelegramBig";
-import WhatsUp from "./icons/WhatsUp";
-import Link from "next/link";
+import ContactDialog, { ContactDialogProps } from "./ContactDialog";
 
 export default function PartnerWithUs({
-  title, body, buttonMessage
+  title, body, buttonMessage, dialog
 }: {
   title: string;
   body: string;
   buttonMessage: string;
+  dialog: ContactDialogProps;
 }) {
   return (
     <section className="w-full flex items-center justify-center bg-secondary/30">
@@ -70,33 +65,7 @@ export default function PartnerWithUs({
                 </Button>
               </motion.div>
             </DialogTrigger>
-            <DialogContent className="max-w-[360px] w-full sm:rounded-none">
-              <DialogHeader className="mb-[26px]">
-                <DialogTitle className="tracking-[-0.6px] leading-[36px] font-medium text-[30px]">
-                  Choose
-                </DialogTitle>
-                <DialogDescription className="text-foreground/65 text-base leading-[130%] tracking-[-0.32px]">
-                  Through which messanger do you want to discuss and order a
-                  project?
-                </DialogDescription>
-              </DialogHeader>
-              <div className="flex gap-2">
-                <Link
-                  className="p-4 bg-muted"
-                  href="https://t.me/dizipro_order"
-                  target="_blank"
-                >
-                  <TelegramBig className="w-[112px] h-[112px]" />
-                </Link>
-                <Link
-                  className="p-4 bg-muted"
-                  href="https://wa.me/998906666660"
-                  target="_blank"
-                >
-                  <WhatsUp className="w-[112px] h-[112px]" />
-                </Link>
-              </div>
-            </DialogContent>
+            <ContactDialog {...dialog} />
           </Dialog>
         </div>
       </div>

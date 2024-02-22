@@ -79,6 +79,10 @@ export default async function Index({ params }: Props) {
         }}
         body={translation("hero.body")}
         buttonMessage={translation("hero.start-btn.message")}
+        dialog={{
+          title: translation("contact-dialog.title"),
+          description: translation("contact-dialog.description")
+        }}
       />
       <HowItWorks
         title={translation("how-it-works.title")}
@@ -87,6 +91,7 @@ export default async function Index({ params }: Props) {
       <OurWork
         title={translation("our-work.title")}
         buttonMessage={translation("our-work.show-btn.message")}
+        locale={params.locale}
       />
       <WhyChooseUs title={translation("why-choose-us.title")} benefits={benefits} />
       <Programs title={translation("programs-we-use.title")} />

@@ -75,5 +75,9 @@
   },
   "portfolio": {
     "title": "Our work"
+  },
+  "contact-dialog": {
+    "title": "Choose",
+    "description": "Through which messanger do you want to discuss and order a project?"
   }
 }
