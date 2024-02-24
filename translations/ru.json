@@ -1,80 +1,80 @@
 {
   "header": {
     "navbar": {
-      "navbar-item-1": "How it works",
-      "navbar-item-2": "Our portfolio",
-      "navbar-item-3": "Support"
+      "navbar-item-1": "Как оформить заказ",
+      "navbar-item-2": "Портфолио",
+      "navbar-item-3": "Поддержка"
       
     },
     "order-btn": {
-      "message": "Order"
+      "message": "Заказы"
     }
   },
   "hero": {
     "title": {
-      "firstPart": "We make ",
-      "mainPart": "high",
-      "lastPart": " quality 3D models for you"
+      "firstPart": "МЫ СОЗДАЕМ ДЛЯ ВАС ",
+      "mainPart": "КАЧЕСТВЕННЫЕ",
+      "lastPart": " 3D МОДЕЛИ"
     },
-    "body": "Dizipro crafts top-notch 3D models online, powered by our skilled freelance team.",
+    "body": "Dizipro создает первоклассные 3D-модели онлайн с помощью нашей опытной команды фрилансеров.",
     "start-btn": {
-      "message": "Start now"
+      "message": "Начать сейчас"
     }
   },
   "how-it-works": {
-    "title": "HOW IT WORKS",
+    "title": "КАК ОФОРМИТЬ  ЗАКАЗ",
     "timeline": {
-      "item-1": "Contact us",
-      "item-2": "Show us the object you want",
-      "item-3": "Price and deadline negotiation",
-      "item-4": "Confirm the rendering",
-      "item-5": "Make a payment",
-      "item-6": "Get your order"
+      "item-1": "Свяжитесь с нами",
+      "item-2": "Укажите желаемый проект",
+      "item-3": "Согласование цены и сроков",
+      "item-4": "Подтвердить визуализацию",
+      "item-5": "Оплата услуг",
+      "item-6": "Получите ваш заказ"
     }
   },
   "our-work": {
-    "title": "Our work",
+    "title": "НАШИ РАБОТЫ",
     "show-btn": {
-      "message": "Show all"
+      "message": "Посмотреть все"
     }
   },
   "why-choose-us": {
-    "title": "WHY CHOOSE US?",
+    "title": "ПОЧЕМУ ВЫБИРАЮТ ИМЕННО НАС?",
     "benefits": {
       "item-1": {
-        "title": "Custom Creations",
-        "body": "Receive tailor-made, precise, and top-quality 3D models and environments, crafted to your specifications."
+        "title": "Кастомизация",
+        "body": "Получите индивидуальные, точные и высококачественные виртуальные 3D-модели , созданные в соответствии с вашими требованиями."
       },
       "item-2": {
-        "title": "Competitive Pricing",
-        "body": "Access custom 3D model creation services at unbeatable rates, ensuring value without compromising on quality."
+        "title": "Компетентный Подход",
+        "body": "Получите доступ к услугам по созданию пользовательских 3D-моделей по непревзойденным ценам, гарантируя ценность без ущерба для качества."
       },
       "item-3": {
-        "title": "User-Friendly Service",
-        "body": "Our streamlined process simplifies ordering and ensures a seamless experience from start to completion."
+        "title": "Удобства Для Пользователя",
+        "body": "Наш оптимизированный процесс упрощает оформление заказа и обеспечивает бесперебойную работу от начала до завершения."
       },
       "item-4": {
-        "title": "Skilled Professionals",
-        "body": "Our talented freelancers offer personalized support and expertise, enriching your project with their experience."
+        "title": "Квалифицированные Специалисты",
+        "body": "Наши талантливые фрилансеры предлагают индивидуальную поддержку и экспертные знания, обогащая ваш проект своим опытом."
       }
     }
   },
   "programs-we-use": {
-    "title": "Programs we use"
+    "title": "ИСПОЛЬЗУЕМЫЕ ПРОГРАММЫ"
   },
   "partner-with-us": {
-    "title": "Partner with us",
-    "body": "Get outstanding 3D models made just for you by our expert team. Enjoy high-quality designs created with care by our professionals.",
+    "title": "СОТРУДНИЧЕСТВО",
+    "body": "Получите непревзойдённые 3D-модели, созданные специально для вас нашей командой экспертов. Наслаждайтесь высококачественным дизайном, тщательно созданным нашими профессионалами.",
     "start-btn": {
-      "message":"Start now"
+      "message":"Начать сейчас"
     }
   },
   "footer": {
-    "contact-us": "Contact Us",
+    "contact-us": "Свяжитесь с нами",
     "copyright": "XK MCHJ «Dizipro»"
   },
   "portfolio": {
-    "title": "Our work"
+    "title": "НАШИ РАБОТЫ"
   },
   "contact-dialog": {
     "title": "Choose",
