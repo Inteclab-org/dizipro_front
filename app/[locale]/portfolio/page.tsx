@@ -16,7 +16,7 @@ export default async function PortfolioPage({params}: Props) {
       <h2 className="tracking-[-1.04px] leading-[68px] uppercase font-semibold text-[52px] mb-[40px]">
         {translation("portfolio.title")}
       </h2>
-      <Portfolio />
+      <Portfolio locale={params.locale} />
     </section>
   );
 }

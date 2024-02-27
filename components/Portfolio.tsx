@@ -6,8 +6,13 @@ import { useEffect, useState } from "react";
 import { Tabs, TabsList } from '@/components/ui/tabs';
 import { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from '@/components/ui/pagination';
 import Categories from "./Categories";
+import { Locale } from "@/i18n";
 
-export default function Portfolio() {
+export default function Portfolio({
+  locale
+}: {
+  locale: Locale
+}) {
   const limit = 24;
   const supabase = createClient();
   const [tabs, setTabs] = useState<Category[] | null>(null);
@@ -58,6 +63,7 @@ export default function Portfolio() {
             tabs={tabs}
             setCategory={setCategory}
             handlePageChange={handlePageChange}
+            locale={locale}
           />
         </TabsList>
         <Projects data={projects} />
@@ -101,5 +107,6 @@ export default function Portfolio() {
 
 export interface Category {
   id: number;
-  name: string;
+  name_en?: string;
+  name_ru?: string;
 }
