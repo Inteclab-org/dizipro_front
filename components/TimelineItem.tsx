@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { fadeIn } from "@/lib/utils";
+import { cn, fadeIn } from "@/lib/utils";
 
 export default function TimelineItem({
   icon,
@@ -13,7 +13,12 @@ export default function TimelineItem({
         <Image className="w-[50px] h-[50px]" src={`/${icon}.png`} alt={icon} width={50} height={50} />
       </div>
       <motion.div
-        className="timieline-title text-[20px] font-medium leading-[28px] tracking-[-0.2px]"
+        className={
+          cn(
+            "timieline-title text-[20px] font-medium leading-[28px] tracking-[-0.2px]",
+            index === 6 ? "whitespace-nowrap" : ""
+          )
+        }
         initial="hidden"
         whileInView="visible"
         variants={fadeIn}
