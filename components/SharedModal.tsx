@@ -2,11 +2,11 @@ import { AnimatePresence, motion, MotionConfig } from "framer-motion";
 import Image from "next/image";
 import { useSwipeable } from "react-swipeable";
 import { ProjectType } from "./Projects";
-import BlurImage from "./BlurImage";
-import { range, variants } from "@/lib/utils";
+import { variants } from "@/lib/utils";
 import useKeypress from "react-use-keypress";
 import Arrow from "./icons/Arrow";
 import { useState } from "react";
+import ImageView from "./ImageView";
 
 export default function SharedModal({
   currentPhoto,
@@ -45,6 +45,8 @@ export default function SharedModal({
       setCurrentIndex((prevIndex) => prevIndex - 1);
     }
   });
+
+  console.log(currentProject, currentPhoto)
 
   return (
     <MotionConfig
@@ -122,45 +124,14 @@ export default function SharedModal({
             >
               <AnimatePresence initial={false}>
                 {currentPhoto.images && currentPhoto.images.length > 1 && currentPhoto.images.map((project, projectIndex) => (
-                  <motion.button
-                    initial={{
-                      width: "0%",
-                      x: `${Math.max((projectIndex - 1) * -100, -100)}%`,
-                    }}
-                    animate={{
-                      scale: project.src === currentProject.src ? 1.25 : 1,
-                      width: "100%",
-                      x: `${Math.max((projectIndex + 1) * -100, -100)}%`,
-                    }}
-                    exit={{ width: "0%" }}
-                    onClick={() => {
-                      setCurrentProject(project);
-                      setCurrentIndex(projectIndex);
-                    }}
-                    key={`${project.id}${currentProject.src}`}
-                    className={`${
-                      project.src === currentProject.src
-                        ? "z-20 rounded-md shadow shadow-black/50 bg-white"
-                        : "z-10 bg-white/40"
-                    } relative inline-block w-full shrink-0 transform-gpu overflow-hidden focus:outline-none`}
-                  >
-                    <BlurImage
-                      width={180}
-                      height={120}
-                      project={project}
-                      className={`${
-                        project.src === currentProject.src
-                          ? "brightness-110 hover:brightness-110"
-                          : "brightness-50 contrast-125 hover:brightness-75"
-                      } h-full transform object-cover transition`}
-                    />
-                    {/* <Image 
-                      width={180}
-                      height={120}
-                      src={`${STORAGE_URL}${project.src}`}
-                      alt=""
-                    /> */}
-                  </motion.button>
+                  <ImageView
+                    key={`view-${project.id}-${projectIndex}`}
+                    project={project}
+                    projectIndex={projectIndex}
+                    currentProject={currentProject}
+                    setCurrentProject={setCurrentProject}
+                    setCurrentIndex={setCurrentIndex}
+                  />
                 ))}
               </AnimatePresence>
             </motion.div>

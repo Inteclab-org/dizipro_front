@@ -1,17 +1,17 @@
 import Image from "next/image";
-import { useState } from "react";
+import { memo, useState } from "react";
 import { ProjectType } from "./Projects";
 import { cn } from "@/lib/utils";
 
 type BlurImageProps = {
-  project: ProjectType,
-  width?: number,
-  height?: number,
-  className?: string,
-  isImportant?: boolean
-}
+  project: ProjectType;
+  width?: number;
+  height?: number;
+  className?: string;
+  isImportant?: boolean;
+};
 
-export default function BlurImage({project, width, height, className, isImportant = false}: BlurImageProps) {
+const BlurImage = memo(({ project, width, height, className, isImportant = false }: BlurImageProps) => {
   const STORAGE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const [isLoading, setLoading] = useState(true);
 
@@ -32,4 +32,6 @@ export default function BlurImage({project, width, height, className, isImportan
       onLoad={() => setLoading(false)}
     />
   );
-}
+});
+
+export default BlurImage;
