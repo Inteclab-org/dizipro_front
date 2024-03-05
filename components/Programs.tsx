@@ -25,7 +25,10 @@ export default function Programs({
               )}
             >
               <Image
-                className="w-auto h-auto max-h-[70px]"
+                className={cn(
+                  "w-auto h-full",
+                  (index === 2 || index === 5) ? "max-h-[70px]" : "max-h-[62px]"
+                )}
                 src={`/program-${index + 1}.png`}
                 alt={`program-item-${index}`}
                 width={272} 
