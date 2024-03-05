@@ -19,6 +19,9 @@ export const metadata = {
   metadataBase: new URL(defaultUrl),
   title: "WE MAKE HIGH QUALITY 3D MODELS FOR YOU",
   description: "Dizipro crafts top-notch 3D models online, powered by our skilled freelance team.",
+  other: {
+    "p:domain_verify": "a90a1f40513d7cb45fce1cf96e039edd"
+  }
 };
 
 export const viewport: Viewport = {
