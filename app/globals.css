@@ -143,3 +143,18 @@
   -moz-opacity: 0;
   filter: alpha(opacity:0);
 }
+
+/* Embla carousel */
+.embla__container {
+  transform: none !important; /* override Embla */
+}
+
+.embla__slide {
+  left: 0 !important; /* override Embla */
+  right: 0 !important; /* override Embla */
+}
+
+.embla__slide.is-selected {
+  opacity: 1;
+  transition: opacity 0.5s ease-in;
+}
