@@ -46,8 +46,6 @@ export default function SharedModal({
     }
   });
 
-  console.log(currentProject, currentPhoto)
-
   return (
     <MotionConfig
       transition={{

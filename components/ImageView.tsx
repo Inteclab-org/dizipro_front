@@ -12,7 +12,6 @@ type ImageViewProps = {
 }
 
 const ImageView = memo(({ project, projectIndex, currentProject, setCurrentProject, setCurrentIndex }: ImageViewProps) => {
-  console.log("rendering")
   return (
     <motion.button
       initial={{

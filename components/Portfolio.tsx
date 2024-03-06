@@ -7,6 +7,7 @@ import { Tabs, TabsList } from '@/components/ui/tabs';
 import { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from '@/components/ui/pagination';
 import Categories from "./Categories";
 import { Locale } from "@/i18n";
+import { useToast } from "./ui/use-toast";
 
 export default function Portfolio({
   locale
@@ -15,6 +16,7 @@ export default function Portfolio({
 }) {
   const limit = 24;
   const supabase = createClient();
+  const { toast } = useToast();
   const [tabs, setTabs] = useState<Category[] | null>(null);
   const [category, setCategory] = useState<number | null>(null);
   const [projects, setProjects] = useState<ProjectType[] | null>(null);
@@ -43,7 +45,11 @@ export default function Portfolio({
         setTotalPages(Math.ceil(count / limit));
       }
     } catch (error: any) {
-      console.error('Error fetching data:', error.message);
+      toast({
+        title: "Error fetching data:",
+        description: error.message,
+        variant: "destructive"
+      });
     }
   };
 

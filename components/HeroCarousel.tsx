@@ -47,6 +47,7 @@ export function HeroCarousel() {
             )
           } key={`hero-carousel-item-${index}`}>
             <Image
+              className="w-[1280px] h-[302px]"
               alt={`Hero carousel item ${index + 1}`}
               src={`/hero-carousel-${index + 1}.jpg`}
               width={1280}
