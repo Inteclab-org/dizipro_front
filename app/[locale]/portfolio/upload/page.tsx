@@ -30,14 +30,21 @@ import { Check, Repeat } from "lucide-react"
 import { cn } from "@/lib/utils"
 import Loader from "@/components/ui/loader";
 import { useRouter } from "next/navigation";
+import { Locale } from "@/i18n"
 
 const formSchema = z.object({
   src: z.string({required_error: "Model picture is required"}).min(1, "Upload a model picture"),
   category_id: z.string({required_error: "Category is required"}).min(1, "Choose a category"),
   name: z.string().optional()
-})
+});
 
-export default function UploadModel() {
+interface Props {
+  params: {
+    locale: Locale;
+  };
+};
+
+export default function UploadModel({ params }:Props) {
   const supabase = createClient();
   const { toast } = useToast();
   const router = useRouter();
@@ -289,7 +296,7 @@ export default function UploadModel() {
                         <SelectContent>
                           {
                             categories && categories.map((category: Category) => (
-                              <SelectItem key={`category-item-${category.id}`} value={String(category.id)}>{category.name}</SelectItem>
+                              <SelectItem key={`category-item-${category.id}`} value={String(category.id)}>{category[`name_${params.locale}`]}</SelectItem>
                             ))
                           }
                         </SelectContent>

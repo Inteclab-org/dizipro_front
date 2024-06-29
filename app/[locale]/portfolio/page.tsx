@@ -23,5 +23,6 @@ export default async function PortfolioPage({params}: Props) {
 
 export interface Category {
   id: number;
-  name: string;
+  name_ru: string;
+  name_en: string;
 }
