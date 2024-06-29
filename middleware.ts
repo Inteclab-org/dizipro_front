@@ -3,6 +3,7 @@ import { NextResponse, type NextRequest } from "next/server";
 import { Locale, i18nConfig } from './i18n';
 import { getMatchingLocale } from './lib/i18n/getMatchingLocale';
 
+
 export async function middleware(request: NextRequest) {
   try {
     const localeNotFound: boolean = i18nConfig.locales.every(
@@ -23,7 +24,7 @@ export async function middleware(request: NextRequest) {
     }
   } catch (e) {
     // If you are here, a Supabase client could not be created!
-    // This is likely because you have not set up environment variables.
+    // This is likely because you have not set up environment variables.;
     // Check out http://localhost:3000 for Next Steps.
     return NextResponse.next({
       request: {
