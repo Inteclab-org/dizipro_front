@@ -5,6 +5,7 @@ import { ObjectKeys } from '@/lib/utils';
 const translations = {
   en: () => import('@/translations/en.json').then((module) => module.default),
   ru: () => import('@/translations/ru.json').then((module) => module.default),
+  uz: () => import('@/translations/uz.json').then((module) => module.default)
 };
 
 // Define a generated type for translation object.

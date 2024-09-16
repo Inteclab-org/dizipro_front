@@ -1,0 +1,83 @@
+{
+  "header": {
+    "navbar": {
+      "navbar-item-1": "Buyurtmani rasmiylashtirish",
+      "navbar-item-2": "Portfolio",
+      "navbar-item-3": "Yordam"
+      
+    },
+    "order-btn": {
+      "message": "Buyurtma"
+    }
+  },
+  "hero": {
+    "title": {
+      "firstPart": "SIZ UCHUN YUQORI ",
+      "mainPart": "SIFATDAGI",
+      "lastPart": " 3D MODELLAR YARATAMIZ"
+    },
+    "body": "Dizipro tajribali frilanserlar jamoasi yordamida yuqori sifatli 3D modellarni onlayn tarzda yaratadi.",
+    "start-btn": {
+      "message": "Hoziroq boshlang"
+    }
+  },
+  "how-it-works": {
+    "title": "BUYURTMA QANDAY RASMIYLASHTIRILADI",
+    "timeline": {
+      "item-1": "Biz bilan bog‘laning",
+      "item-2": "Loyihangizni ko‘rsating",
+      "item-3": "Narx va muddatni kelishing",
+      "item-4": "Vizualizatsiyani tasdiqlang",
+      "item-5": "To‘lovni qiling",
+      "item-6": "Buyurtmani qabul qiling"
+    }
+  },
+  "our-work": {
+    "title": "BIZNING ISHLAR",
+    "show-btn": {
+      "message": "Hammasini ko‘rish"
+    }
+  },
+  "why-choose-us": {
+    "title": "NEGA BIZNI TANLASHADI?",
+    "benefits": {
+      "item-1": {
+        "title": "Moslashtiruv",
+        "body": "O‘zingizning talablaringizga muvofiq yaratilgan individual, aniq va yuqori sifatli 3D modellarni qo‘lga kiriting."
+      },
+      "item-2": {
+        "title": "Malakali yondashuv",
+        "body": "Mijozlar uchun maxsus 3D modellarni yaratish xizmatlaridan sifatni pasaytirmasdan eng qulay narxlarda foydalaning"
+      },
+      "item-3": {
+        "title": "Foydalanuvchi qulayligi",
+        "body": "Bizning jarayonimiz buyurtma berishni soddalashtiradi va boshidan oxirigacha uzluksiz xizmat ko‘rsatishni ta’minlaydi"
+      },
+      "item-4": {
+        "title": "Malakali mutaxassislar",
+        "body": "Bizning frilanserlarimiz o‘z tajribalari bilan loyihangizni yanada boyitadilar."
+      }
+    }
+  },
+  "programs-we-use": {
+    "title": "FOYDALANILADIGAN DASTURLAR"
+  },
+  "partner-with-us": {
+    "title": "HAMKORLIK",
+    "body": "Mutaxassislarimiz tomonidan siz uchun yaratilgan 3D modellarni qo‘lga kiriting va zavq oling.",
+    "start-btn": {
+      "message":"Hoziroq boshlang"
+    }
+  },
+  "footer": {
+    "contact-us": "Biz bilan bog‘laning",
+    "copyright": "XK MCHJ «Dizipro»"
+  },
+  "portfolio": {
+    "title": "BIZNING ISHLAR"
+  },
+  "contact-dialog": {
+    "title": "Tanlang",
+    "description": "Loyihani qaysi messenjer orqali muhokama qilishni va buyurtma berishni istaysiz?"
+  }
+}

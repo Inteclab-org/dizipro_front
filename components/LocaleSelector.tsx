@@ -23,6 +23,11 @@ export default function LocaleSelector({ params }: Props) {
       short: 'ENG'
     },
     ru: { native: 'Русский', english: 'Russian', short: 'RUS' },
+    uz: {
+      native: 'Oʻzbek',
+      english: 'Uzbek',
+      short: 'UZ'
+    },
   };
 
   return (

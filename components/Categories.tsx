@@ -26,7 +26,7 @@ export default function Categories({
           handlePageChange(1);
         }}
       >
-        {locale === "en" ? "All models" : "Все модели"}
+        {locale === "en" ? "All models" : (locale === "uz" ? "Barcha modellar" : "Все модели")}
       </TabsTrigger>
       {
         tabs?.map((tab: Category) => (
