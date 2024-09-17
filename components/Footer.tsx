@@ -2,14 +2,14 @@ import Link from "next/link";
 import { memo } from "react";
 import Logo from "./icons/Logo";
 import Mail from "./icons/Mail";
-import { TranslationObejct } from "@/lib/i18n/loadTranslation";
+import { TranslationObject } from "@/lib/i18n/loadTranslation";
 import { Locale } from "@/i18n";
 
 const Footer = memo(({
   translation,
   locale
 }: {
-  translation: TranslationObejct;
+  translation: TranslationObject;
   locale: Locale;
 }) => {
   return (
