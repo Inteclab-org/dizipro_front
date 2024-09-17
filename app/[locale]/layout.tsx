@@ -24,13 +24,6 @@ export const metadata = {
   }
 };
 
-export const viewport: Viewport = {
-  width: "1280",
-  initialScale: 1,
-  maximumScale: 1,
-  userScalable: true,
-};
-
 export async function generateStaticParams() {
   return i18nConfig.locales.map((locale: Locale) => ({ locale: locale }));
 }

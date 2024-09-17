@@ -14,7 +14,7 @@ export type Translation = Awaited<
 >;
 
 // Define a generated type for all nested keys found in Translation type.
-export type TranslationObejct = (key: ObjectKeys<Translation>) => string;
+export type TranslationObject = (key: ObjectKeys<Translation>) => string;
 
 /**
  * Loads a translation .json file asynchronously based on a given locale.
