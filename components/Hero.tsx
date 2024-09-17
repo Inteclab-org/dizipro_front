@@ -25,7 +25,7 @@ const Hero = ({ title, body, buttonMessage, dialog }: Props) => {
     <section className="max-w-[1440px] w-full flex flex-col items-center justify-center pt-[60px] pb-[100px] gap-[80px]">
       <div className="max-w-[865px] w-full text-center flex flex-col items-center">
         <motion.h1
-          className="tracking-[-1.04px] leading-[68px] uppercase font-semibold mb-[16px] text-[42px] md:text-[52px]"
+          className="tracking-tighter leading-[1.1] uppercase font-semibold mb-[16px] text-[42px] md:text-[52px] md:tracking-[-1.04px] md:leading-[68px]"
           initial="hidden"
           whileInView="visible"
           variants={fadeIn}
@@ -37,7 +37,7 @@ const Hero = ({ title, body, buttonMessage, dialog }: Props) => {
           {title.lastPart}
         </motion.h1>
         <motion.p
-          className="text-[20px] leading-[30px] opacity-60 mb-[30px]"
+          className="text-[20px] leading-[1.2] text-black/60 mb-[16px] md:mb-[30px] md:leading-[30px]"
           initial="hidden"
           whileInView="visible"
           variants={fadeIn}
@@ -48,7 +48,7 @@ const Hero = ({ title, body, buttonMessage, dialog }: Props) => {
         </motion.p>
 
         <Dialog>
-          <DialogTrigger asChild>
+          <DialogTrigger className="max-w-[340px] w-full sm:w-auto" asChild>
             <motion.div
               initial="hidden"
               whileInView="visible"
@@ -56,7 +56,7 @@ const Hero = ({ title, body, buttonMessage, dialog }: Props) => {
               viewport={{ once: true }}
               custom={2}
             >
-              <Button variant="primary">
+              <Button variant="primary" className="w-full">
                 {buttonMessage}
               </Button>
             </motion.div>
