@@ -25,4 +25,5 @@ export interface Category {
   id: number;
   name_ru: string;
   name_en: string;
+  name_uz: string;
 }
