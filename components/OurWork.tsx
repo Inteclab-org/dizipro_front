@@ -35,16 +35,16 @@ export default function OurWork({
   }, []);
   
   return <>
-  <section className="flex flex-col items-center max-w-[1140px] w-full text-center pt-[36px] pb-[100px]">
+  <section className="flex flex-col items-center max-w-[1140px] w-full text-center pt-[36px] pb-[28px] md:pb-[100px]">
     <motion.div initial="hidden" whileInView="visible" variants={fadeIn} viewport={{ once: true }} custom={0} >
-      <h2 className="tracking-[-1.04px] leading-[68px] uppercase font-semibold text-[52px] mb-[50px]">
+      <h2 className="tracking-[-0.56px] leading-[1.2] uppercase font-semibold text-[28px] mb-[16px] md:mb-[50px] md:tracking-[-1.04px] md:leading-[68px] md:text-[52px]">
         {title}
       </h2>
     </motion.div>
     <Projects data={projects} />
-    <motion.div className="max-w-[250px] w-full" initial="hidden" whileInView="visible" variants={fadeIn} viewport={{ once: true }} custom={1} >
+    <motion.div className="max-w-[360px] md:max-w-[250px] w-full" initial="hidden" whileInView="visible" variants={fadeIn} viewport={{ once: true }} custom={1} >
       <Button variant="outline" asChild>
-        <Link href={`/${locale}/portfolio`}>{
+        <Link href={`/${locale}/portfolio`} className="py-[12px] text-[16px] md:py-[16px] md:text-[18px]">{
           buttonMessage
         }</Link>
       </Button>
