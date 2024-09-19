@@ -13,7 +13,7 @@ const Footer = memo(({
   locale: Locale;
 }) => {
   return (
-    <footer className="max-w-[1112px] w-full pt-[41px] pb-[12px] flex flex-col gap-[32px] leading-[22px]">
+    <footer className="max-w-[1112px] w-full pt-[41px] pb-[12px] px-4 flex flex-col gap-[32px] leading-[22px]">
         <div className="flex items-start justify-between gap-[40px]">
           <Link href={`/${locale}/`}>
             <Logo className="shrink-0" />

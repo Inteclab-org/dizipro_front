@@ -22,7 +22,7 @@ interface Props {
 
 const Hero = ({ title, body, buttonMessage, dialog }: Props) => {
   return (
-    <section className="max-w-[1440px] w-full flex flex-col items-center justify-center pt-[60px] pb-[88px] gap-[56px] md:gap-[80px] md:pb-[100px]">
+    <section className="max-w-[1440px] px-4 w-full flex flex-col items-center justify-center pt-[60px] pb-[88px] gap-[56px] md:gap-[80px] md:pb-[100px]">
       <div className="max-w-[865px] w-full text-center flex flex-col items-center">
         <motion.h1
           className="tracking-tighter leading-[1.1] uppercase font-semibold mb-[16px] text-[42px] md:text-[52px] md:tracking-[-1.04px] md:leading-[68px]"

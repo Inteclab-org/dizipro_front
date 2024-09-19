@@ -35,7 +35,7 @@ export default function OurWork({
   }, []);
   
   return <>
-  <section className="flex flex-col items-center max-w-[1140px] w-full text-center pt-[36px] pb-[28px] md:pb-[100px]">
+  <section className="flex flex-col items-center max-w-[1140px] px-4 w-full text-center pt-[36px] pb-[28px] md:pb-[100px]">
     <motion.div initial="hidden" whileInView="visible" variants={fadeIn} viewport={{ once: true }} custom={0} >
       <h2 className="tracking-[-0.56px] leading-[1.2] uppercase font-semibold text-[28px] mb-[16px] md:mb-[50px] md:tracking-[-1.04px] md:leading-[68px] md:text-[52px]">
         {title}

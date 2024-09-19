@@ -14,7 +14,7 @@ interface Props {
 }
 
 const Header = ({ translation, locale }: Props) => (
-  <header className="max-w-[1200px] w-full flex items-center justify-between gap-[40px] pt-[32px] pb-[16px] border-b-[1px] border-border/20">
+  <header className="max-w-[1200px] w-full flex items-center justify-between gap-[40px] pt-[32px] pb-[16px] px-4 border-b-[1px] border-border/20">
     <Dialog>
       <div className="flex items-center justify-between w-full max-w-[55%] gap-[40px]">
         <nav className="items-center gap-[42px] leading-[24px] hidden md:flex">

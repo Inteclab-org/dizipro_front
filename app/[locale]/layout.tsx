@@ -46,7 +46,7 @@ export default async function RootLayout({ children, params }: Props) {
           rel="stylesheet"
         />
       </Head>
-      <body className="w-full min-h-screen flex flex-col items-center px-4">
+      <body className="w-full min-h-screen flex flex-col items-center">
         <NextTopLoader />
         <Header translation={translation} locale={params.locale} />
         {children}

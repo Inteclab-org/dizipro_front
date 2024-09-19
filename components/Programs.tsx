@@ -10,7 +10,7 @@ export default function Programs({
   title: string
 }) {
   return <>
-    <section className="max-w-[1140px] w-full text-center mt-[36px] mb-[225px]">
+    <section className="max-w-[1140px] ox-4 w-full text-center mt-[36px] mb-[225px]">
       <motion.h2 initial="hidden" whileInView="visible" variants={fadeIn} viewport={{ once: true }} custom={0} className="tracking-[-0.56px] leading-[1.2] text-[28px] uppercase font-semibold mb-[16px] md:mb-[78px] md:tracking-[-1.04px] md:leading-[68px] md:text-[52px]">
         {title}
       </motion.h2>

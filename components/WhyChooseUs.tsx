@@ -12,7 +12,7 @@ export default function WhyChooseUs({
 }) {
   return (
     <>
-      <section className="flex flex-col max-w-[1140px] w-full mt-[36px] mb-[28px] md:mb-[136px]">
+      <section className="flex flex-col max-w-[1140px] px-4 w-full mt-[36px] mb-[28px] md:mb-[136px]">
         <motion.div
           initial="hidden"
           whileInView="visible"

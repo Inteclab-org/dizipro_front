@@ -19,16 +19,17 @@ export default function PartnerWithUs({
   dialog: ContactDialogProps;
 }) {
   return (
-    <section className="w-full flex items-center justify-center bg-secondary/30">
-      <div className="max-w-[918px] w-full py-[55px] flex justify-end relative">
+    <section className="w-full px-4 flex items-center justify-center bg-secondary/30">
+      <div className="max-w-[918px] w-full py-[55px] flex justify-end relative gap-[20px] flex-col md:flex-row">
         <Image
-          className="w-[274px] h-[392px] absolute top-[-88px] left-0"
+          className="w-[174px] h-[248px] absolute left-0 top-[-37px] top-[-88px] md:w-[274px] md:h-[392px] "
           src="/partner-bg.png"
           alt="Partner us background"
           width={274}
           height={392}
         />
-        <div className="max-w-[479px] flex flex-col items-start gap-[12px]">
+        <div className="w-[188px] h-[188px] md:w-[275px] md:h-[275px] shrink-0"></div>
+        <div className="flex flex-col items-start gap-[12px] md:max-w-[479px]">
           <motion.h2
             initial="hidden"
             whileInView="visible"
@@ -60,7 +61,7 @@ export default function PartnerWithUs({
                 viewport={{ once: true }}
                 custom={2}
               >
-                <Button variant="secondary">
+                <Button className="w-[320px]" variant="secondary">
                   {buttonMessage}
                 </Button>
               </motion.div>
