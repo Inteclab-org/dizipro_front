@@ -24,7 +24,7 @@ export default function Project({project}: ProjectProps) {
       <DialogContent className="max-w-[708px] w-full border-0 sm:rounded-none p-0">
         <SharedModal
           currentPhoto={project}
-          direction={-1}
+          direction={1}
         />
       </DialogContent>
     </Dialog>

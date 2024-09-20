@@ -17,6 +17,7 @@ export default function ContactDialog({
   title,
   description
 }: ContactDialogProps) {
+  console.log("opening")
   return (
     <DialogContent className="max-w-[360px] w-full sm:rounded-none">
       <DialogHeader className="mb-[26px]">
