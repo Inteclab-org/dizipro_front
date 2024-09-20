@@ -180,3 +180,9 @@
   opacity: 1;
   transition: opacity 0.5s ease-in;
 }
+
+/*  Menu Sheet styles */
+.menu-sheet button svg {
+  width: 32px;
+  height: 32px;
+}

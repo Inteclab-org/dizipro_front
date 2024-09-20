@@ -28,6 +28,11 @@ const Header = ({ translation, locale }: Props) => {
     name: translation('header.navbar.navbar-item-3')
   }];
 
+  const contactDialog = {
+    title: translation("contact-dialog.title"),
+    description: translation("contact-dialog.description")
+  };
+
   return <header className="max-w-[1200px] w-full flex items-center justify-between gap-[40px] pt-[32px] pb-[16px] px-4 border-b-[1px] border-border/20">
     <Dialog>
       <div className="flex items-center justify-between w-full max-w-[55%] gap-[40px]">
@@ -56,12 +61,9 @@ const Header = ({ translation, locale }: Props) => {
         <DialogTrigger className="hidden items-center justify-center whitespace-nowrap leading-[22px] ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-black text-white hover:bg-black/80 font-medium px-9 py-4 md:flex">
           {translation('header.order-btn.message')}
         </DialogTrigger>
-        <Menu translation={translation} locale={locale} menuItems={menuItems} />
+        <Menu menuItems={menuItems} orderBtn={translation('header.order-btn.message')} contactDialog={contactDialog} />
       </div>
-      <ContactDialog
-        title={translation("contact-dialog.title")}
-        description={translation("contact-dialog.description")}
-      />
+      <ContactDialog {...contactDialog} />
     </Dialog>
   </header>
 };
