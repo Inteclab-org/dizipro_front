@@ -63,8 +63,8 @@ export default function Portfolio({
   
   return (
     <>
-      <Tabs defaultValue={category ? String(category) : "all"}>
-        <TabsList className="mb-[40px] p-0 bg-transparent">
+      <Tabs defaultValue={category ? String(category) : "all"} className="w-full">
+        <TabsList className="flex mb-[16px] p-0 bg-transparent h-[55px] overflow-hidden md:mb-[40px]">
           <Categories
             tabs={tabs}
             setCategory={setCategory}
