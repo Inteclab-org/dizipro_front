@@ -200,10 +200,10 @@ export default function UploadModel({ params }:Props) {
   }, []);
 
   return (
-    <section className="flex flex-col max-w-[1140px] w-1/2 pt-[64px] pb-[153px]">
+    <section className="flex flex-col  max-w-[350px] md:max-w-[1140px] md:w-1/2 pt-[64px] pb-[153px]">
       {
         isAuthorized && <>
-          <h2 className="tracking-[-1.04px] leading-[68px] text-center uppercase font-semibold text-[40px] mb-[40px]">
+          <h2 className="tracking-[-0.56px] leading-[1.2] text-[28px] mb-[16px] text-center uppercase font-semibold md:text-[40px] md:mb-[40px] md:tracking-[-1.04px] md:leading-[68px]">
             Create model
           </h2>
           <Form {...form}>
