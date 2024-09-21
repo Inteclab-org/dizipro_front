@@ -40,11 +40,11 @@ const Header = ({ translation, locale }: Props) => {
           {
             menuItems.map((menuItem: MenuItem, index) => (
               !menuItem.link ? (
-                <DialogTrigger>
+                <DialogTrigger key={`menu-item-${index + 1}`}>
                   {menuItem.name}
                 </DialogTrigger>
               ) : (
-                <Link href={menuItem.link}>
+                <Link href={menuItem.link} key={`menu-item-${index + 1}`}>
                   {menuItem.name}
                 </Link>
               )
@@ -61,9 +61,9 @@ const Header = ({ translation, locale }: Props) => {
         <DialogTrigger className="hidden items-center justify-center whitespace-nowrap leading-[22px] ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-black text-white hover:bg-black/80 font-medium px-9 py-4 lg:flex">
           {translation('header.order-btn.message')}
         </DialogTrigger>
-        <Menu menuItems={menuItems} orderBtn={translation('header.order-btn.message')} contactDialog={contactDialog} />
+        <Menu menuItems={menuItems} orderBtn={translation('header.order-btn.message')} contactDialog={contactDialog} locale={locale} />
       </div>
-      <ContactDialog {...contactDialog} />
+      <ContactDialog locale={locale} {...contactDialog} />
     </Dialog>
   </header>
 };

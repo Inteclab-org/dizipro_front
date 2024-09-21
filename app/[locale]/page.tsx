@@ -83,6 +83,7 @@ export default async function Index({ params }: Props) {
           title: translation("contact-dialog.title"),
           description: translation("contact-dialog.description")
         }}
+        locale={params.locale}
       />
       <HowItWorks
         title={translation("how-it-works.title")}

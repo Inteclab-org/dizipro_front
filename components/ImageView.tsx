@@ -12,7 +12,6 @@ type ImageViewProps = {
 }
 
 const ImageView = memo(({ project, projectIndex, currentProject, count, setCurrentProject, setCurrentIndex }: ImageViewProps) => {
-  console.log("count", count, (projectIndex - 1))
   return (
     <button
       onClick={() => {

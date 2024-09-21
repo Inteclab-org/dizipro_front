@@ -6,18 +6,21 @@ import {
 } from "@/components/ui/dialog";
 import TelegramBig from "./icons/TelegramBig";
 import WhatsUp from "./icons/WhatsUp";
+import Phone from "./icons/Phone";
 import Link from "next/link";
+import { Locale } from "@/i18n";
 
 export type ContactDialogProps = {
   title: string;
   description: string;
+  locale?: Locale;
 };
 
 export default function ContactDialog({
   title,
-  description
+  description,
+  locale
 }: ContactDialogProps) {
-  console.log("opening")
   return (
     <DialogContent className="max-w-[360px] w-full sm:rounded-none">
       <DialogHeader className="mb-[26px]">
@@ -28,13 +31,21 @@ export default function ContactDialog({
           {description}
         </DialogDescription>
       </DialogHeader>
-      <div className="flex gap-2">
-        <Link className="p-4 bg-muted" href="https://t.me/dizipro_order" target="_blank">
-          <TelegramBig className="w-[112px] h-[112px]" />
-        </Link>
-        <Link className="p-4 bg-muted" href="https://wa.me/998906666660" target="_blank">
-          <WhatsUp className="w-[112px] h-[112px]" />
-        </Link>
+      <div className="flex flex-col gap-[8px]">
+        {
+          locale === "uz" && <Link className="flex items-center gap-[8px] p-4 bg-muted" href="https://t.me/dizipro_order" target="_blank">
+            <Phone className="w-[32px] h-[32px]" />
+            <p className="font- text-[18px] tracking-[-0.56px] leading-[1.3]">+998(90)98765454</p>
+          </Link>
+        }
+        <div className="flex gap-2 justify-between">
+          <Link className="p-4 bg-muted" href="https://t.me/dizipro_order" target="_blank">
+            <TelegramBig className="w-[112px] h-[112px]" />
+          </Link>
+          <Link className="p-4 bg-muted" href="https://wa.me/998906666660" target="_blank">
+            <WhatsUp className="w-[112px] h-[112px]" />
+          </Link>
+        </div>
       </div>
     </DialogContent>
   )

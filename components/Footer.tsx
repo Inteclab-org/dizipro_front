@@ -19,14 +19,16 @@ const Footer = memo(({
             <Logo className="shrink-0" />
           </Link>
           <div className="flex justify-between flex-col gap-[32px] sm:ml-[100px] md:ml-0 md:gap-[93px] md:flex-row">
-            <div className="flex flex-col gap-[13px]">
-              <p className="font-semibold tracking-[-0.18px]">
-                {translation("footer.phone-number")}
-              </p>
-              <div className="text-[22px] font-bold">
-                +998(99)9875432
+            {
+              locale === "uz" && <div className="flex flex-col gap-[13px]">
+                <p className="font-semibold tracking-[-0.18px]">
+                  {translation("footer.phone-number")}
+                </p>
+                <div className="text-[22px] font-bold">
+                  +998(99)9875432
+                </div>
               </div>
-            </div>
+            }
             <div className="flex flex-col gap-[13px]">
               <p className="font-semibold tracking-[-0.18px]">
                 {translation("footer.contact-us")}

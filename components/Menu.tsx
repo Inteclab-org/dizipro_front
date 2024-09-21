@@ -12,6 +12,7 @@ import Link from "next/link";
 import { Dialog, DialogTrigger } from "./ui/dialog";
 import ContactDialog from "./ContactDialog";
 import { MenuItem } from "./Header";
+import { Locale } from "@/i18n";
 
 interface ContactDialogProps {
   title: string;
@@ -22,9 +23,10 @@ interface Props {
   menuItems: MenuItem[];
   orderBtn: string;
   contactDialog: ContactDialogProps;
+  locale?: Locale;
 }
 
-export default function Menu({ menuItems, orderBtn, contactDialog }: Props) {
+export default function Menu({ menuItems, orderBtn, contactDialog, locale }: Props) {
   return (
     <Sheet>
       <SheetTrigger className="flex shrink-0 bg-transparent p-[8px] hover:bg-transparent active:bg-transparent lg:hidden">
@@ -48,11 +50,11 @@ export default function Menu({ menuItems, orderBtn, contactDialog }: Props) {
             {
               menuItems.map((menuItem: MenuItem, index) => (
                 !menuItem.link ? (
-                  <DialogTrigger className="text-[42px] tracking-[-0.84px] leading-[1.1] font-bold uppercase text-black/70 text-center">
+                  <DialogTrigger key={`menu-item-${index + 1}`} className="text-[42px] tracking-[-0.84px] leading-[1.1] font-bold uppercase text-black/70 text-center">
                     {menuItem.name}
                   </DialogTrigger>
                 ) : (
-                  <Link href={menuItem.link} className="text-[42px] tracking-[-0.84px] leading-[1.1] font-bold uppercase text-black/70 text-center">
+                  <Link key={`menu-item-${index + 1}`} href={menuItem.link} className="text-[42px] tracking-[-0.84px] leading-[1.1] font-bold uppercase text-black/70 text-center">
                     {menuItem.name}
                   </Link>
                 )
@@ -64,7 +66,7 @@ export default function Menu({ menuItems, orderBtn, contactDialog }: Props) {
               {orderBtn}
             </DialogTrigger>
           </SheetFooter>
-          <ContactDialog {...contactDialog} />
+          <ContactDialog locale={locale} {...contactDialog} />
         </Dialog>
       </SheetContent>
     </Sheet>

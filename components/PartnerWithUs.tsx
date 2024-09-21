@@ -9,14 +9,16 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import ContactDialog, { ContactDialogProps } from "./ContactDialog";
+import { Locale } from "@/i18n";
 
 export default function PartnerWithUs({
-  title, body, buttonMessage, dialog
+  title, body, buttonMessage, dialog, locale
 }: {
   title: string;
   body: string;
   buttonMessage: string;
   dialog: ContactDialogProps;
+  locale?: Locale;
 }) {
   return (
     <section className="w-full px-4 flex items-center justify-center bg-secondary/30">
@@ -66,7 +68,7 @@ export default function PartnerWithUs({
                 </Button>
               </motion.div>
             </DialogTrigger>
-            <ContactDialog {...dialog} />
+            <ContactDialog locale={locale} {...dialog} />
           </Dialog>
         </div>
       </div>

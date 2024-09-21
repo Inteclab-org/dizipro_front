@@ -6,6 +6,7 @@ import { Button } from "./ui/button";
 import { motion } from "framer-motion";
 import { Dialog, DialogTrigger } from "@/components/ui/dialog";
 import ContactDialog, { ContactDialogProps } from "./ContactDialog";
+import { Locale } from "@/i18n";
 
 export type HeroTitleProps = {
   firstPart: string;
@@ -18,9 +19,10 @@ interface Props {
   body: string;
   buttonMessage: string;
   dialog: ContactDialogProps;
+  locale?: Locale;
 }
 
-const Hero = ({ title, body, buttonMessage, dialog }: Props) => {
+const Hero = ({ title, body, buttonMessage, dialog, locale }: Props) => {
   return (
     <section className="max-w-[1440px] px-4 w-full flex flex-col items-center justify-center pt-[60px] pb-[88px] gap-[56px] md:gap-[80px] md:pb-[100px]">
       <div className="max-w-[865px] w-full text-center flex flex-col items-center">
@@ -61,7 +63,7 @@ const Hero = ({ title, body, buttonMessage, dialog }: Props) => {
               </Button>
             </motion.div>
           </DialogTrigger>
-          <ContactDialog {...dialog} />
+          <ContactDialog locale={locale} {...dialog} />
         </Dialog>
       </div>
       <HeroCarousel />
