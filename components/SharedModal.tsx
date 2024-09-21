@@ -2,11 +2,12 @@ import { AnimatePresence, motion, MotionConfig } from "framer-motion";
 import Image from "next/image";
 import { useSwipeable } from "react-swipeable";
 import { ProjectType } from "./Projects";
-import { variants } from "@/lib/utils";
+import { cn, variants } from "@/lib/utils";
 import useKeypress from "react-use-keypress";
 import Arrow from "./icons/Arrow";
 import { useState } from "react";
 import ImageView from "./ImageView";
+import { transform } from "typescript";
 
 export default function SharedModal({
   currentPhoto,
@@ -15,6 +16,8 @@ export default function SharedModal({
   const STORAGE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const [currentProject, setCurrentProject] = useState(currentPhoto);
   const [currentIndex, setCurrentIndex] = useState<number>(0);
+  const length = currentPhoto.images?.length || 1;
+  const distance = (length / 2) * -100;
 
   const handlers = useSwipeable({
     onSwipedLeft: () => {
@@ -54,11 +57,11 @@ export default function SharedModal({
       }}
     >
       <div
-        className="relative flex aspect-[3/2.75] w-full max-w-[708px] items-center h-auto"
+        className="relative flex aspect-[3/2.75] w-full items-center h-auto max-w-[95%] mx-auto lg:max-w-[708px]"
         {...handlers}
       >
         {/* Main image */}
-        <div className="w-full h-full overflow-hidden relative flex items-center justify-center">
+        <div className="overflow-hidden relative flex items-center justify-center w-full h-full">
           <AnimatePresence initial={false} custom={direction}>
             <motion.div
               key={currentProject.id}
@@ -67,7 +70,7 @@ export default function SharedModal({
               initial="enter"
               animate="center"
               exit="exit"
-              className="absolute w-full h-full flex items-center justify-center"
+              className="absolute w-[95%] h-[95%] flex items-center justify-center lg:w-full lg:h-full"
             >
               <Image
                 src={`${STORAGE_URL}${currentProject.src}`}
@@ -115,10 +118,13 @@ export default function SharedModal({
             </>
           </div>
 
-          <div className="fixed inset-x-0 bottom-0 overflow-hidden">
+          <div className="fixed inset-x-0 bottom-0">
             <motion.div
-              initial={false}
-              className="mx-auto mt-6 mb-6 flex aspect-[3/2] h-14"
+              className={
+                cn(
+                  "mt-6 mb-6 flex aspect-[3/2] h-9 relative left-[10%] sm:h-14",
+                )
+              }
             >
               <AnimatePresence initial={false}>
                 {currentPhoto.images && currentPhoto.images.length > 1 && currentPhoto.images.map((project, projectIndex) => (
@@ -129,6 +135,7 @@ export default function SharedModal({
                     currentProject={currentProject}
                     setCurrentProject={setCurrentProject}
                     setCurrentIndex={setCurrentIndex}
+                    count={currentPhoto.images?.length || 3}
                   />
                 ))}
               </AnimatePresence>
