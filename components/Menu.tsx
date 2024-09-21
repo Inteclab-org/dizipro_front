@@ -27,7 +27,7 @@ interface Props {
 export default function Menu({ menuItems, orderBtn, contactDialog }: Props) {
   return (
     <Sheet>
-      <SheetTrigger className="flex shrink-0 bg-transparent p-[8px] hover:bg-transparent active:bg-transparent md:hidden">
+      <SheetTrigger className="flex shrink-0 bg-transparent p-[8px] hover:bg-transparent active:bg-transparent lg:hidden">
         <Image
           src="/menu.svg" 
           alt="Menu Icon" 
@@ -59,8 +59,8 @@ export default function Menu({ menuItems, orderBtn, contactDialog }: Props) {
               ))
             }
           </nav>
-          <SheetFooter>
-            <DialogTrigger className="items-center justify-center whitespace-nowrap leading-[22px] ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-black text-white hover:bg-black/80 font-medium px-9 py-4 md:flex">
+          <SheetFooter className="sm:flex-col">
+            <DialogTrigger className="items-center justify-center whitespace-nowrap leading-[22px] ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-black text-white hover:bg-black/80 font-medium px-9 py-4">
               {orderBtn}
             </DialogTrigger>
           </SheetFooter>
