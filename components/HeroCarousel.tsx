@@ -33,21 +33,21 @@ export function HeroCarousel() {
   }, []);
 
   return (
-    <Carousel className="max-w-[1280px] w-full" opts={{
+    <Carousel className="max-w-[1280px] w-full mx-auto" opts={{
         loop: true
       }}
       // plugins={[plugin.current]}
     >
-      <CarouselContent className="embla__container h-[302px]">
+      <CarouselContent className="embla__container flex items-center justify-center h-[150px] md:h-[302px]">
         {Array.from({ length: 5 }).map((_, index) => (
           <CarouselItem className={
             cn(
-              "embla__slide h-[302px] px-0 absolute z-1 flex-[0_0_auto] w-full opacity-0 top-0",
+              "embla__slide px-0 absolute z-1 flex-[0_0_auto] w-full opacity-0 top-0 flex h-full",
               selected === index ? "is-selected" : ''
             )
           } key={`hero-carousel-item-${index}`}>
             <Image
-              className="w-[1280px] h-[302px]"
+              className="w-full h-auto object-contain"
               alt={`Hero carousel item ${index + 1}`}
               src={`/hero-carousel-${index + 1}.jpg`}
               width={1280}

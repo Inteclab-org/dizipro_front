@@ -58,6 +58,7 @@ export default async function RootLayout({ children, params }: Props) {
             title: translation("contact-dialog.title"),
             description: translation("contact-dialog.description")
           }}
+          locale={params.locale}
         />
         <Footer translation={translation} locale={params.locale} />
         <Toaster />

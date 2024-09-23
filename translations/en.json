@@ -25,9 +25,9 @@
     "title": "HOW IT WORKS",
     "timeline": {
       "item-1": "Contact us",
-      "item-2": "Show us the object you want",
-      "item-3": "Price and deadline negotiation",
-      "item-4": "Confirm the rendering",
+      "item-2": "Show us the object\nyou want",
+      "item-3": "Price and deadline\nnegotiation",
+      "item-4": "Confirm the\nrendering",
       "item-5": "Make a payment",
       "item-6": "Get your order"
     }
@@ -71,7 +71,8 @@
   },
   "footer": {
     "contact-us": "Contact Us",
-    "copyright": "XK MCHJ «Dizipro»"
+    "copyright": "XK MCHJ «Dizipro»",
+    "phone-number": "Phone number"
   },
   "portfolio": {
     "title": "Our work"

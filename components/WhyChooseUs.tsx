@@ -12,7 +12,7 @@ export default function WhyChooseUs({
 }) {
   return (
     <>
-      <section className="flex flex-col max-w-[1140px] w-full mt-[36px] mb-[136px]">
+      <section className="flex flex-col max-w-[1140px] px-4 w-full mt-[36px] mb-[28px] md:mb-[136px]">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -20,15 +20,15 @@ export default function WhyChooseUs({
           viewport={{ once: true }}
           custom={0}
         >
-          <h2 className="tracking-[-1.04px] leading-[68px] text-center uppercase font-semibold text-[52px] mb-[60px]">
+          <h2 className="tracking-[-0.56px] leading-[1.2] text-[28px] text-center uppercase font-semibold mb-[16px] md:mb-[60px] md:tracking-[-1.04px] md:leading-[68px] md:text-[52px]">
             {title}
           </h2>
         </motion.div>
-        <ul className="flex justify-center gap-[24px] leading-[24px]">
+        <ul className="flex flex-wrap justify-center gap-[12px] leading-[24px] md:gap-[24px]">
           {benefits.map((benefit: BenefitType, index) => (
             <li
               key={`benefit-${index}`}
-              className="flex-1 bg-white flex flex-col items-start py-5 pr-[21px] pl-[19px] gap-[8px] min-w-[200px] max-w-[267px] border border-border/15"
+              className="flex-1 bg-white flex flex-col items-start py-5 pr-[21px] pl-[19px] gap-[8px] min-w-[320px] max-w-[358px] lg:min-w-[200px] lg:max-w-[267px] border border-border/15"
             >
               <motion.div
                 initial="hidden"

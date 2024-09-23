@@ -21,10 +21,10 @@ export default function Project({project}: ProjectProps) {
         <BlurImage project={project} width={238} height={238} isImportant={true} className="relative z-[1]" />
       </div>
       </DialogTrigger>
-      <DialogContent className="max-w-[708px] w-full border-0 sm:rounded-none p-0">
+      <DialogContent className="max-w-[85%] w-full border-0 sm:rounded-none p-0 lg:max-w-[708px]">
         <SharedModal
           currentPhoto={project}
-          direction={-1}
+          direction={1}
         />
       </DialogContent>
     </Dialog>

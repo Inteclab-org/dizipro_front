@@ -14,12 +14,11 @@ export default function HowItWorks({
   title,
   timeline
 }: Props) {
-  return <section id="how-it-works" className="max-w-[1140px] w-full text-center pt-[36px] pb-[120px]">
+  return <section id="how-it-works" className=" w-full text-center md:pt-[36px] pb-[36px] md:pb-[120px]">
     <motion.div initial="hidden" whileInView="visible" variants={fadeIn} viewport={{ once: true }} custom={0} >
-      <h2 className="tracking-[-1.04px] leading-[68px] uppercase font-semibold text-[52px] mb-[78px]">
+      <h2 className="tracking-[-0.56px] leading-[1.2] uppercase font-semibold text-[28px] mb-[24px] md:mb-[78px] md:text-[52px] md:leading-[68px] md:tracking-[-1.04px]">
         {title}
       </h2>
     </motion.div>
-    <Timeline timeline={timeline} />
-  </section>
+    <Timeline timeline={timeline} />  </section>
 }

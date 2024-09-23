@@ -16,11 +16,11 @@ export default function Categories({
   locale
 }: Props) {
   return(
-    <>
+    <div className="flex overflow-x-auto whitespace-nowrap">
       <TabsTrigger
         key="tab-trigger-all"
         value="all"
-        className="border-b-[3px] py-3 px-5 rounded-none border-border/10 font-bold leading-[140%] tracking-[-0.18px] text-[18px] transition-colors hover:border-border/30 data-[state=active]:shadow-none data-[state=active]:text-primary data-[state=active]:border-primary"
+        className="shrink-0 py-[10px] px-[12px] border-b-[3px] rounded-none text-black/75 border-border/10 leading-[1.4] tracking-[-0.14px] text-[14px] transition-colors hover:border-border/30 data-[state=active]:shadow-none data-[state=active]:text-primary data-[state=active]:border-primary data-[state=active]:font-bold md:tracking-[-0.18px] md:text-[18px] md:py-3 md:px-5"
         onClick={() => {
           setCategory(null);
           handlePageChange(1);
@@ -33,7 +33,7 @@ export default function Categories({
           <TabsTrigger
             key={tab.id}
             value={tab[`name_${locale}`] || `category-${tab.id}`}
-            className="border-b-[3px] py-3 px-5 rounded-none border-border/10 font-bold leading-[140%] tracking-[-0.18px] text-[18px] transition-colors hover:border-border/30 data-[state=active]:shadow-none data-[state=active]:text-primary data-[state=active]:border-primary"
+            className="shrink-0 py-[10px] px-[12px] border-b-[3px] rounded-none text-black/75 border-border/10 leading-[1.4] tracking-[-0.14px] text-[14px] transition-colors hover:border-border/30 data-[state=active]:shadow-none data-[state=active]:text-primary data-[state=active]:border-primary data-[state=active]:font-bold md:tracking-[-0.18px] md:text-[18px] md:py-3 md:px-5"
             onClick={() => {
               setCategory(tab.id);
               handlePageChange(1);
@@ -43,6 +43,6 @@ export default function Categories({
           </TabsTrigger>
         ))
       }
-    </>
+    </div>
   )
 }

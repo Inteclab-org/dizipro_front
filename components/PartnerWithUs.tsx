@@ -9,33 +9,36 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import ContactDialog, { ContactDialogProps } from "./ContactDialog";
+import { Locale } from "@/i18n";
 
 export default function PartnerWithUs({
-  title, body, buttonMessage, dialog
+  title, body, buttonMessage, dialog, locale
 }: {
   title: string;
   body: string;
   buttonMessage: string;
   dialog: ContactDialogProps;
+  locale?: Locale;
 }) {
   return (
-    <section className="w-full flex items-center justify-center bg-secondary/30">
-      <div className="max-w-[918px] w-full py-[55px] flex justify-end relative">
+    <section className="w-full px-4 flex items-center justify-center bg-secondary/30">
+      <div className="max-w-[918px] w-full py-[55px] flex justify-end relative flex-col md:gap-[20px] md:flex-row">
         <Image
-          className="w-[274px] h-[392px] absolute top-[-88px] left-0"
+          className="w-[174px] h-[248px] absolute left-0 top-[-37px] md:top-[-88px] md:w-[274px] md:h-[392px] "
           src="/partner-bg.png"
           alt="Partner us background"
           width={274}
           height={392}
         />
-        <div className="max-w-[479px] flex flex-col items-start gap-[12px]">
+        <div className="w-[188px] h-[188px] md:w-[275px] md:h-[275px] shrink-0"></div>
+        <div className="flex flex-col items-start gap-[4px] md:gap-[12px] md:max-w-[479px]">
           <motion.h2
             initial="hidden"
             whileInView="visible"
             variants={fadeIn}
             viewport={{ once: true }}
             custom={0}
-            className="text-[36px] tracking-[-0.72px] leading-[50px] uppercase font-semibold"
+            className="text-[30px] tracking-[-0.6px] leading-[40px] uppercase font-semibold md:text-[36px] md:tracking-[-0.72px] md:leading-[50px]"
           >
             {title}
           </motion.h2>
@@ -45,7 +48,7 @@ export default function PartnerWithUs({
             variants={fadeIn}
             viewport={{ once: true }}
             custom={1}
-            className="w-full text-[20px] tracking-[-0.2px] leading-[30px] mb-[18px]"
+            className="w-full text-[18px] tracking-[-0.18px] leading-[25px] mb-[28px] md:mb-[18px] md:text-[20px] md:tracking-[-0.2px] md:leading-[30px]"
           >
             {body}
           </motion.p>
@@ -60,12 +63,12 @@ export default function PartnerWithUs({
                 viewport={{ once: true }}
                 custom={2}
               >
-                <Button variant="secondary">
+                <Button className="w-[320px]" variant="secondary">
                   {buttonMessage}
                 </Button>
               </motion.div>
             </DialogTrigger>
-            <ContactDialog {...dialog} />
+            <ContactDialog locale={locale} {...dialog} />
           </Dialog>
         </div>
       </div>

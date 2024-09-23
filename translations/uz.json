@@ -29,7 +29,7 @@
       "item-3": "Narx va muddatni kelishing",
       "item-4": "Vizualizatsiyani tasdiqlang",
       "item-5": "To‘lovni qiling",
-      "item-6": "Buyurtmani qabul qiling"
+      "item-6": "Buyurtmangizni oling"
     }
   },
   "our-work": {
@@ -71,7 +71,8 @@
   },
   "footer": {
     "contact-us": "Biz bilan bog‘laning",
-    "copyright": "XK MCHJ «Dizipro»"
+    "copyright": "XK MCHJ «Dizipro»",
+    "phone-number": "Telefon raqam"
   },
   "portfolio": {
     "title": "BIZNING ISHLAR"
