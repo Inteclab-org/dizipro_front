@@ -21,17 +21,17 @@ export default function PartnerWithUs({
   locale?: Locale;
 }) {
   return (
-    <section className="w-full px-4 flex items-center justify-center bg-secondary/30">
-      <div className="max-w-[918px] w-full py-[55px] flex justify-end relative flex-col md:gap-[20px] md:flex-row">
+    <section className="w-full px-4 flex items-center justify-center bg-secondary/30 text-center md:text-start">
+      <div className="max-w-[918px] w-full py-[55px] flex justify-end relative flex-col items-center md:items-start md:gap-[20px] md:flex-row">
         <Image
-          className="w-[174px] h-[248px] absolute left-0 top-[-37px] md:top-[-88px] md:w-[274px] md:h-[392px] "
+          className="w-[174px] h-[248px] absolute top-[-37px] -translate-x-2/4 left-2/4 md:left-0 md:translate-x-0 md:top-[-88px] md:w-[274px] md:h-[392px] "
           src="/partner-bg.png"
           alt="Partner us background"
           width={274}
           height={392}
         />
         <div className="w-[188px] h-[188px] md:w-[275px] md:h-[275px] shrink-0"></div>
-        <div className="flex flex-col items-start gap-[4px] md:gap-[12px] md:max-w-[479px]">
+        <div className="flex flex-col items-center gap-[4px] md:gap-[12px] max-w-[479px] md:items-start">
           <motion.h2
             initial="hidden"
             whileInView="visible"

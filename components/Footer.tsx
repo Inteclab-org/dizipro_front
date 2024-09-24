@@ -13,8 +13,8 @@ const Footer = memo(({
   locale: Locale;
 }) => {
   return (
-    <footer className="max-w-[1112px] w-full pt-[41px] pb-[12px] px-4 flex flex-col gap-[32px] leading-[22px]">
-        <div className="flex gap-[40px] flex-col items-start sm:items-center sm:flex-row md:justify-between md:items-start">
+    <footer className="max-w-[1112px] w-full pt-[41px] pb-[12px] px-4 flex flex-col gap-[32px] leading-[22px] text-center sm:text-start">
+        <div className="flex gap-[40px] flex-col justify-center items-center sm:justify-start sm:flex-row md:justify-between md:items-start">
           <Link href={`/${locale}/`}>
             <Logo className="shrink-0" />
           </Link>
@@ -25,7 +25,7 @@ const Footer = memo(({
                   {translation("footer.phone-number")}
                 </p>
                 <div className="text-[22px] font-bold">
-                  +998(99)9875432
+                  +998&nbsp;(99)&nbsp;987&nbsp;54&nbsp;32
                 </div>
               </div>
             }
