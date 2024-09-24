@@ -1,8 +1,6 @@
-import { NextResponse, type NextRequest } from "next/server";
-// import { createClient } from "@/utils/supabase/middleware";
+import { NextResponse, type NextRequest } from 'next/server';
 import { Locale, i18nConfig } from './i18n';
-import { getMatchingLocale } from './lib/i18n/getMatchingLocale';
-
+import { getMatchingLocale } from './lib/i18n/getMatchingLocale'; // Assuming you use browser-based locale matching
 
 export async function middleware(request: NextRequest) {
   try {
@@ -11,32 +9,40 @@ export async function middleware(request: NextRequest) {
         !request.nextUrl.pathname.startsWith(`/${locale}/`) &&
         request.nextUrl.pathname !== `/${locale}`
     );
-  
+
     // Locale not found in request url, redirect to matched locale url.
     if (localeNotFound) {
-      // Get matching locale for user.
-      const newLocale: Locale = getMatchingLocale(request);
-  
-      // Return new url redirect and redirect user to correct locale url.
+      // Use Vercel's geo header or fallback to getMatchingLocale
+      const country = request.geo?.country || 'US'; // Default to 'US' if country is not available
+      let newLocale: Locale = 'en'; // Fallback default locale
+
+      console.log("country", country)
+
+      // Set locale based on the user's country (assuming Uzbekistan should be in 'uz')
+      if (country === 'UZ') {
+        newLocale = 'uz';
+      } else if (country === 'RU') {
+        newLocale = 'ru';
+      } else {
+        // Use browser-based matching if geo headers are not sufficient
+        newLocale = getMatchingLocale(request); // Fallback to getMatchingLocale
+      }
+
+      // Return a redirect response to the correct locale URL.
       return NextResponse.redirect(
-        new URL(`/${newLocale}/${request.nextUrl.pathname}`, request.url)
+        new URL(`/${newLocale}${request.nextUrl.pathname}`, request.url)
       );
     }
   } catch (e) {
-    // If you are here, a Supabase client could not be created!
-    // This is likely because you have not set up environment variables.;
-    // Check out http://localhost:3000 for Next Steps.
-    return NextResponse.next({
-      request: {
-        headers: request.headers,
-      },
-    });
+    // Catch any errors and continue without redirecting
+    console.error("Error in middleware:", e);
+    return NextResponse.next();
   }
 }
 
 export const config = {
   matcher: [
-    // '/((?!api|_next/static|_next/image|images|favicon.ico).*)',
-    '/((?!api|static|.*\\..*|_next|favicon.ico).*)'
+    // Exclude paths like API, static files, and other non-page routes
+    '/((?!api|static|.*\\..*|_next|favicon.ico).*)',
   ],
 };
