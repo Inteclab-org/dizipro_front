@@ -24,9 +24,9 @@ const Footer = memo(({
                 <p className="font-semibold tracking-[-0.18px]">
                   {translation("footer.phone-number")}
                 </p>
-                <div className="text-[22px] font-bold">
-                  +998&nbsp;(99)&nbsp;987&nbsp;54&nbsp;32
-                </div>
+                <Link className="text-[22px] font-bold" href="tel:+998908178874" target="_blank">
+                  +998&nbsp;(90)&nbsp;817&nbsp;88&nbsp;74
+                </Link>
               </div>
             }
             <div className="flex flex-col gap-[13px]">
