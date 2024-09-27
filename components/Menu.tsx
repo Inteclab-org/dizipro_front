@@ -50,11 +50,11 @@ export default function Menu({ menuItems, orderBtn, contactDialog, locale }: Pro
             {
               menuItems.map((menuItem: MenuItem, index) => (
                 !menuItem.link ? (
-                  <DialogTrigger key={`menu-item-${index + 1}`} className="text-[42px] tracking-[-0.84px] leading-[1.1] font-bold uppercase text-black/70 text-center">
+                  <DialogTrigger key={`menu-item-${index + 1}`} className="text-[38px] tracking-[-0.84px] leading-[1.1] font-bold uppercase text-black/70 text-center">
                     {menuItem.name}
                   </DialogTrigger>
                 ) : (
-                  <Link key={`menu-item-${index + 1}`} href={menuItem.link} className="text-[42px] tracking-[-0.84px] leading-[1.1] font-bold uppercase text-black/70 text-center">
+                  <Link key={`menu-item-${index + 1}`} href={menuItem.link} className="text-[38px] tracking-[-0.84px] leading-[1.1] font-bold uppercase text-black/70 text-center">
                     {menuItem.name}
                   </Link>
                 )
