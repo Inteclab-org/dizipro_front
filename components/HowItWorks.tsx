@@ -5,15 +5,18 @@ import Timeline from "./Timeline";
 import { motion } from "framer-motion";
 import { TimelineItemProps } from "./TimelineItem";
 import TimelineMobile from "./TimelineMobile";
+import { Locale } from "@/i18n";
 
 type Props = {
   title: string;
   timeline: TimelineItemProps[];
+  locale: Locale;
 };
 
 export default function HowItWorks({
   title,
-  timeline
+  timeline,
+  locale
 }: Props) {
   return <section id="how-it-works" className=" w-full text-center md:pt-[36px] pb-[36px] md:pb-[120px]">
     <motion.div initial="hidden" whileInView="visible" variants={fadeIn} viewport={{ once: true }} custom={0} >
@@ -21,7 +24,7 @@ export default function HowItWorks({
         {title}
       </h2>
     </motion.div>
-    <Timeline timeline={timeline} />
+    <Timeline timeline={timeline} locale={locale} />
     <TimelineMobile timeline={timeline} />
   </section>
 }

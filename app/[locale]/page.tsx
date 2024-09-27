@@ -88,6 +88,7 @@ export default async function Index({ params }: Props) {
       <HowItWorks
         title={translation("how-it-works.title")}
         timeline={timeline}
+        locale={params.locale}
       />
       <OurWork
         title={translation("our-work.title")}
