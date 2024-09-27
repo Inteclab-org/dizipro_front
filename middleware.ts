@@ -16,8 +16,6 @@ export async function middleware(request: NextRequest) {
       const country = request.geo?.country || 'US'; // Default to 'US' if country is not available
       let newLocale: Locale = 'en'; // Fallback default locale
 
-      console.log("country", country)
-
       // Set locale based on the user's country (assuming Uzbekistan should be in 'uz')
       if (country === 'UZ') {
         newLocale = 'uz';
