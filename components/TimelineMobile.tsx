@@ -40,7 +40,7 @@ export default function TimelineMobile({timeline}: Props) {
           "flex flex-col items-center relative w-full",
         )}>
           <div className={cn(
-            "w-[50px] h-[50px] bg-white rounded-[50%] outline outline-[rgb(1,144,195)] outline-[6px] outline-offset-[-6px] flex justify-center items-center font-extrabold text-[18px] leading-[1.22] text-center my-3.5 mx-[19.5px] translate-x-[-19%]",
+            "w-[50px] h-[50px] bg-white rounded-[50%] border-[6px] border-solid border-[rgb(1,144,195)] flex justify-center items-center font-extrabold text-[18px] leading-[1.22] text-center my-3.5 mx-[19.5px] translate-x-[-19%]",
           )}>
             <span style={{textShadow: "0 1px 3px rgb(0 0 0 / 30%)"}}>{(timelineItem.index || 0) + 1}</span>
           </div>
