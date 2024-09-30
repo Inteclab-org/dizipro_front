@@ -28,7 +28,7 @@ export default function WhyChooseUs({
           {benefits.map((benefit: BenefitType, index) => (
             <li
               key={`benefit-${index}`}
-              className="flex-1 bg-white flex flex-col items-start py-5 pr-[21px] pl-[19px] gap-[8px] min-w-[320px] max-w-[358px] lg:min-w-[200px] lg:max-w-[267px] border border-border/15"
+              className="flex-1 bg-white flex flex-col items-start py-5 pr-[21px] pl-[19px] gap-[8px] min-w-[310px] max-w-[358px] lg:min-w-[200px] lg:max-w-[267px] border border-border/15"
             >
               <motion.div
                 initial="hidden"

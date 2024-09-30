@@ -19,14 +19,14 @@ export default function TimelineMobile({timeline}: Props) {
   timelineMobile[2] = timelineMobile[3];
   timelineMobile[3] = temp;
 
-  return <div className="mx-auto px-6 grid grid-cols-2 mb-[-33px] max-w-[375px] min-w-[375px] md:hidden">
+  return <div className="mx-auto px-6 grid grid-cols-2 mb-[-33px] max-w-[375px] min-w-[320px] md:hidden">
     {timelineMobile.map((timelineItem) => (
       <div key={`timeline-mobile-item-${timelineItem.index}`} className={cn(
         "flex flex-col items-center mb-[33px]",
       )}>
         <motion.div
           className={cn(
-            "flex items-end text-[16px] font-medium tracking-[-0.16px] leading-[19px] grow max-w-[148px] mx-2",
+            "flex items-end text-[16px] font-medium tracking-[-0.16px] leading-[19px] grow max-w-[148px] mx-2 whitespace-pre-line",
           )}
           initial="hidden"
           whileInView="visible"
@@ -58,13 +58,13 @@ export default function TimelineMobile({timeline}: Props) {
             ...(timelineItem.index === 5 && {background: "#009D3F"}),
           }}></div>
           {
-            timelineItem.index === 1 && <div className="absolute bg-transparent overflow-hidden w-[100px] ml-auto right-0 top-[29px] z-[-2]">
-              <div className="h-[169px] w-[200px] bg-[none] rounded-[50%] border-[20px] border-solid border-[#009963] translate-x-[-100px]"></div>
+            timelineItem.index === 1 && <div className="absolute bg-transparent overflow-hidden w-[100px] ml-auto right-[-10px] top-[29px] z-[-2] sm:right-0">
+              <div className="h-[189px] w-[200px] bg-[none] rounded-[50%] border-[20px] border-solid border-[#009963] translate-x-[-100px]"></div>
             </div>
           }
           {
-            timelineItem.index === 3 && <div className="absolute bg-transparent overflow-hidden w-[100px] left-0 top-[29px] z-[-2]">
-            <div className="h-[150px] w-[200px] bg-[none] rounded-[50%] border-[20px] border-solid border-[#008DDD]"></div>
+            timelineItem.index === 3 && <div className="absolute bg-transparent overflow-hidden w-[100px] left-[-10px] top-[29px] z-[-2] sm:left-0">
+            <div className="h-[169px] w-[200px] bg-[none] rounded-[50%] border-[20px] border-solid border-[#008DDD]"></div>
           </div>
           }
         </div>

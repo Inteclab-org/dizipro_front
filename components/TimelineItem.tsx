@@ -13,10 +13,14 @@ export default function TimelineItem({
     <div
       className={cn(
         "timeline-content relative max-w-[185px] w-full text-center shrink-0 grow-0 self-start relative p-2",
-        (locale === "en" || locale === "uz") && (
+        (locale === "en") && (
           ((index === 2 || index === 4) && "!top-[1px] lg:!top-0") ||
           (index === 6 && "!bottom-[27px] lg:!bottom-[28px]")
         ),
+        (locale === "uz") && (
+          ((index === 2 || index === 4) && "clg:top-[1px] lg:!top-0") ||
+          (index === 6 && "clg:!bottom-[27px] lg:!bottom-[28px]")
+        )
       )}
     >
       <div className="timeline-icon absolute w-[50px] h-[50px] -translate-x-2/4 left-2/4 top-[calc(100%_+_90px)]">
@@ -25,7 +29,7 @@ export default function TimelineItem({
       <motion.div
         className={
           cn(
-            "relative timieline-title font-medium whitespace-pre-line leading-[28px] text-[18px] tracking-[-0.2px]",
+            "relative timieline-title font-medium leading-[28px] text-[18px] tracking-[-0.2px]",
             (index && index > 4) && "whitespace-nowrap"
           )
         }

@@ -63,7 +63,7 @@ export default function PartnerWithUs({
                 viewport={{ once: true }}
                 custom={2}
               >
-                <Button className="w-[320px]" variant="secondary">
+                <Button className="w-[310px]" variant="secondary">
                   {buttonMessage}
                 </Button>
               </motion.div>
