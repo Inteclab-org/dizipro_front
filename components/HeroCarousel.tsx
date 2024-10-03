@@ -8,14 +8,10 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel"
 import Image from "next/image"
-// import Autoplay from "embla-carousel-autoplay"
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 
 export function HeroCarousel() {
-  // const plugin = useRef(
-  //   Autoplay({ delay: 3000, stopOnInteraction: true })
-  // );
   const [selected, setSelected] = useState<number>(0);
 
   const autoPlayCarousel = () => {
@@ -36,9 +32,8 @@ export function HeroCarousel() {
     <Carousel className="max-w-[1280px] w-full mx-auto" opts={{
         loop: true
       }}
-      // plugins={[plugin.current]}
     >
-      <CarouselContent className="embla__container flex items-center justify-center h-[150px] md:h-[302px]">
+      <CarouselContent className="embla__container flex items-center justify-center h-[150px] sm:h-[302px]">
         {Array.from({ length: 5 }).map((_, index) => (
           <CarouselItem className={
             cn(
@@ -47,9 +42,16 @@ export function HeroCarousel() {
             )
           } key={`hero-carousel-item-${index}`}>
             <Image
-              className="w-full h-auto object-contain"
+              className="hidden md:block w-full h-auto object-contain"
               alt={`Hero carousel item ${index + 1}`}
               src={`/hero-carousel-${index + 1}.jpg`}
+              width={1280}
+              height={302}
+            />
+            <Image
+              className="w-full h-auto object-contain md:hidden"
+              alt={`Hero carousel item ${index + 1}`}
+              src={`/hero-carousel-mobile-${index + 1}.jpg`}
               width={1280}
               height={302}
             />
