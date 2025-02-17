@@ -16,7 +16,7 @@ const defaultUrl = process.env.VERCEL_URL
 
 const metadataTranslations = {
   en: {
-    "title": "WE MAKE HIGH QUALITY 3D MODELS FOR YOU",
+    "title": "WE MAKE HIGH-QUALITY 3D MODELS FOR YOU",
     "description": "Dizipro crafts top-notch 3D models online, powered by our skilled freelance team."
   },
   uz: {
@@ -31,7 +31,7 @@ const metadataTranslations = {
 
 let metadata = {
   metadataBase: new URL(defaultUrl),
-  title: "WE MAKE HIGH QUALITY 3D MODELS FOR YOU",
+  title: "WE MAKE HIGH-QUALITY 3D MODELS FOR YOU",
   description: "Dizipro crafts top-notch 3D models online, powered by our skilled freelance team.",
   other: {
     "p:domain_verify": "a90a1f40513d7cb45fce1cf96e039edd"
