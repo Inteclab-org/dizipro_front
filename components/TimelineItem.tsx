@@ -40,7 +40,7 @@ export default function TimelineItem({
         custom={index ? index : 0}
       >
         {text}
-        <div className="absolute border top-[-8px] h-[calc(100%+16px)] left-[-14px] w-[calc(100%+28px)]"></div>
+        <div className="absolute top-[-8px] h-[calc(100%+16px)] left-[-14px] w-[calc(100%+28px)]"></div>
 
       </motion.div>
     </div>
