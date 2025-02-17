@@ -94,7 +94,7 @@
 }
 
 .timeline-content:nth-child(even) {
-  @apply self-end before:-top-[48.5px] after:-top-3.5;
+  @apply self-end before:-top-[47.5px] after:-top-3.5;
 }
 
 .timeline-content:nth-child(1), .timeline-content:nth-child(5) {
