@@ -81,8 +81,12 @@
   @apply absolute w-[186px] h-[6px] bg-[#CCE8F8] content-[""] translate-x-2/4 -translate-y-2/4  right-2/4 top-[calc(100%_+_49px)];
 }
 
-.timeline-content:after {
+.timeline-content:after, .timeline-content-mobile:after {
   @apply absolute w-0.5 h-[30px] translate-x-2/4 -translate-y-2/4 z-[-1] content-[""] border-2 border-solid border-[#E6E6E6] right-2/4 top-[calc(100%_+_4px)];
+}
+
+.timeline-content-mobile:after {
+  @apply h-[10px] top-[-9px];
 }
 
 .timeline-icon:before {
@@ -128,6 +132,12 @@
 
   .timeline-content:nth-child(2), .timeline-content:nth-child(4) {
     @apply top-[1px];
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .timeline-content:nth-child(even)::before {
+    @apply top-[-47.5px];
   }
 }
 
