@@ -9,6 +9,7 @@ import Script from "next/script";
 import { Toaster } from "@/components/ui/toaster";
 import { Locale, i18nConfig } from '@/i18n';
 import getTranslation from "@/lib/i18n/getTranslation";
+import { GoogleTagManager } from '@next/third-parties/google';
 
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
@@ -61,6 +62,7 @@ async function RootLayout({ children, params }: Props) {
           href="https://fonts.cdnfonts.com/css/sf-pro-display"
           rel="stylesheet"
         />
+        <GoogleTagManager gtmId={process.env.GOOGLE_TAG_ID || "GTM-XYZ"} />
       </Head>
       <body className="w-full min-h-screen flex flex-col items-center">
         <NextTopLoader />
