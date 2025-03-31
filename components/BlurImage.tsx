@@ -12,7 +12,7 @@ type BlurImageProps = {
 };
 
 const BlurImage = memo(({ project, width, height, className, isImportant = false }: BlurImageProps) => {
-  const STORAGE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const STORAGE_URL = process.env.SUPABASE_URL;
   const [isLoading, setLoading] = useState(true);
 
   return (

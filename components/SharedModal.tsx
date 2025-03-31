@@ -13,7 +13,7 @@ export default function SharedModal({
   currentPhoto,
   direction,
 }: SharedModalProps) {
-  const STORAGE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const STORAGE_URL = process.env.SUPABASE_URL;
   const [currentProject, setCurrentProject] = useState(currentPhoto);
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const length = currentPhoto.images?.length || 1;
