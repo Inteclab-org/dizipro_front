@@ -64,6 +64,24 @@ async function RootLayout({ children, params }: Props) {
         />
       </Head>
       <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GOOGLE_TAG_ID || "GTM-XYZ"} />
+       {/* Google Ads gtag.js (прямой ID для рекламы) */}
+       <Script
+        strategy="afterInteractive"
+        src="https://www.googletagmanager.com/gtag/js?id=AW-16922692367"
+      />
+      <Script
+        id="gtag-init"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'AW-16922692367');
+          `,
+        }}
+      />
+
       <Script
         id="gtag-report-conversion"
         strategy="afterInteractive"
@@ -76,10 +94,10 @@ async function RootLayout({ children, params }: Props) {
                 }
               };
               gtag('event', 'conversion', {
-                send_to: 'AW-16922692367/WBSxCKXfz68aEI-Wr4U_',
-                value: 1.0,
-                currency: 'USD',
-                event_callback: callback
+                  'send_to': 'AW-16922692367/WBSxCKXfz68aEI-Wr4U_',
+                  'value': 1.0,
+                  'currency': 'USD',
+                  'event_callback': callback
               });
               return false;
             }
