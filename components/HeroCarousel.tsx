@@ -10,6 +10,7 @@ import {
 import Image from "next/image"
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
+import { sendGTMEvent } from '@next/third-parties/google';
 
 export function HeroCarousel() {
   const [selected, setSelected] = useState<number>(0);
@@ -63,6 +64,7 @@ export function HeroCarousel() {
         disabled={false}
         onClick={() => {
           setSelected((prevVal) => {
+            sendGTMEvent({ event: 'carouselInteraction', value: prevVal === 0 ? 4 : prevVal - 1 });
             if (prevVal === 0) return 4;
             return prevVal - 1;
           })
@@ -73,6 +75,7 @@ export function HeroCarousel() {
         disabled={false}
         onClick={() => {
           setSelected((prevVal) => {
+            sendGTMEvent({ event: 'carouselInteraction', value: prevVal === 4 ? 0 : prevVal + 1 });
             if (prevVal === 4) return 0;
             return prevVal + 1;
           })
