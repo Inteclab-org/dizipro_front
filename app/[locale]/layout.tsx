@@ -62,7 +62,7 @@ async function RootLayout({ children, params }: Props) {
           href="https://fonts.cdnfonts.com/css/sf-pro-display"
           rel="stylesheet"
         />
-        <GoogleTagManager gtmId={process.env.GOOGLE_TAG_ID || "GTM-XYZ"} />
+        <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GOOGLE_TAG_ID || "GTM-XYZ"} />
       </Head>
       <body className="w-full min-h-screen flex flex-col items-center">
         <NextTopLoader />
