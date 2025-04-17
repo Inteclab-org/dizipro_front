@@ -64,6 +64,29 @@ async function RootLayout({ children, params }: Props) {
         />
       </Head>
       <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GOOGLE_TAG_ID || "GTM-XYZ"} />
+      <Script
+        id="gtag-report-conversion"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+            function gtag_report_conversion(url) {
+              var callback = function () {
+                if (typeof(url) != 'undefined') {
+                  window.location = url;
+                }
+              };
+              gtag('event', 'conversion', {
+                send_to: 'AW-16922692367/WBSxCKXfz68aEI-Wr4U_',
+                value: 1.0,
+                currency: 'USD',
+                event_callback: callback
+              });
+              return false;
+            }
+          `,
+        }}
+      />
+
       <body className="w-full min-h-screen flex flex-col items-center">
         <NextTopLoader />
         <Header translation={translation} locale={params.locale} />
