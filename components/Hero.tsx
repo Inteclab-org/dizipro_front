@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 import { Dialog, DialogTrigger } from "@/components/ui/dialog";
 import ContactDialog, { ContactDialogProps } from "./ContactDialog";
 import { Locale } from "@/i18n";
+import Link from "next/link";
 
 export type HeroTitleProps = {
   firstPart: string;

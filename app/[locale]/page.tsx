@@ -10,6 +10,7 @@ import Click from "@/components/icons/Click";
 import Message from "@/components/icons/Message";
 import Price from "@/components/icons/Price";
 import Check from "@/components/icons/Check";
+import Link from "next/link";
 
 interface Props {
   params: {

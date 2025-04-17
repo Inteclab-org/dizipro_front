@@ -1,7 +1,6 @@
 import { Locale } from "@/i18n";
 import { Category } from "./Portfolio";
 import { TabsTrigger } from "./ui/tabs";
-import { sendGTMEvent } from '@next/third-parties/google';
 
 type Props = {
   tabs: Category[] | null;
@@ -24,7 +23,7 @@ export default function Categories({
         className="shrink-0 py-[10px] px-[12px] border-b-[3px] rounded-none text-black/75 border-border/10 leading-[1.4] tracking-[-0.14px] text-[14px] transition-colors hover:border-border/30 data-[state=active]:shadow-none data-[state=active]:text-primary data-[state=active]:border-primary data-[state=active]:font-bold md:tracking-[-0.18px] md:text-[18px] md:py-3 md:px-5"
         onClick={() => {
           setCategory(null);
-          sendGTMEvent({ event: 'categorySelected', value: 'all' });
+          window.gtag_report_conversion();
           handlePageChange(1);
         }}
       >
@@ -38,7 +37,7 @@ export default function Categories({
             className="shrink-0 py-[10px] px-[12px] border-b-[3px] rounded-none text-black/75 border-border/10 leading-[1.4] tracking-[-0.14px] text-[14px] transition-colors hover:border-border/30 data-[state=active]:shadow-none data-[state=active]:text-primary data-[state=active]:border-primary data-[state=active]:font-bold md:tracking-[-0.18px] md:text-[18px] md:py-3 md:px-5"
             onClick={() => {
               setCategory(tab.id);
-              sendGTMEvent({ event: 'categorySelected', value: tab[`name_${locale}`] })
+              window.gtag_report_conversion();
               handlePageChange(1);
             }}
           >
