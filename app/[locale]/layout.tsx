@@ -54,6 +54,7 @@ async function RootLayout({ children, params }: Props) {
   const translation = await getTranslation(params.locale);
   metadata.title = translation("metadata.title");
   metadata.description = translation("metadata.description");
+  console.log(process.env.NEXT_PUBLIC_GOOGLE_TAG_ID);
 
   return (
     <html lang="en" className={GeistSans.className}>
