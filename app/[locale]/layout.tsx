@@ -54,7 +54,6 @@ async function RootLayout({ children, params }: Props) {
   const translation = await getTranslation(params.locale);
   metadata.title = translation("metadata.title");
   metadata.description = translation("metadata.description");
-  console.log(process.env.NEXT_PUBLIC_GOOGLE_TAG_ID);
 
   return (
     <html lang="en" className={GeistSans.className}>
@@ -63,8 +62,8 @@ async function RootLayout({ children, params }: Props) {
           href="https://fonts.cdnfonts.com/css/sf-pro-display"
           rel="stylesheet"
         />
-        <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GOOGLE_TAG_ID || "GTM-XYZ"} />
       </Head>
+      <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GOOGLE_TAG_ID || "GTM-XYZ"} />
       <body className="w-full min-h-screen flex flex-col items-center">
         <NextTopLoader />
         <Header translation={translation} locale={params.locale} />
