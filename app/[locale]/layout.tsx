@@ -10,33 +10,65 @@ import { Toaster } from "@/components/ui/toaster";
 import { Locale, i18nConfig } from '@/i18n';
 import getTranslation from "@/lib/i18n/getTranslation";
 import { GoogleTagManager } from '@next/third-parties/google';
-
-const defaultUrl = process.env.VERCEL_URL
-  ? `https://${process.env.VERCEL_URL}`
-  : "http://localhost:3000";
+import { Metadata } from "next";
 
 const metadataTranslations = {
   en: {
-    "title": "WE MAKE HIGH-QUALITY 3D MODELS FOR YOU",
-    "description": "Dizipro crafts top-notch 3D models online, powered by our skilled freelance team."
+    "title": "High-Quality 3D Models Crafted by Experts | Dizipro",
+    "description": "Dizipro delivers premium 3D models online, created by our skilled freelance team. Perfect for games, ads, and 3D printing."
   },
   uz: {
-    "title": "SIZ UCHUN YUQORI SIFATDAGI 3D MODELLAR YARATAMIZ",
+    "title": "SIZ UCHUN YUQORI SIFATDAGI 3D MODELLAR YARATAMIZ | Dizipro",
     "description": "Dizipro tajribali frilanserlar jamoasi yordamida yuqori sifatli 3D modellarni onlayn tarzda yaratadi."
   },
   ru: {
-    "title": "МЫ СОЗДАЕМ ДЛЯ ВАС КАЧЕСТВЕННЫЕ 3D МОДЕЛИ",
+    "title": "МЫ СОЗДАЕМ ДЛЯ ВАС КАЧЕСТВЕННЫЕ 3D МОДЕЛИ | Dizipro",
     "description": "Dizipro создает первоклассные 3D-модели онлайн с помощью нашей опытной команды фрилансеров."
   }
-}
+};
 
-let metadata = {
-  metadataBase: new URL(defaultUrl),
-  title: "WE MAKE HIGH-QUALITY 3D MODELS FOR YOU",
-  description: "Dizipro crafts top-notch 3D models online, powered by our skilled freelance team.",
+// const defaultUrl = process.env.VERCEL_URL
+//   ? `https://${process.env.VERCEL_URL}`
+//   : "http://localhost:3000";
+
+// let metadata = {
+//   metadataBase: new URL(defaultUrl),
+//   title: "WE MAKE HIGH-QUALITY 3D MODELS FOR YOU",
+//   description: "Dizipro crafts top-notch 3D models online, powered by our skilled freelance team.",
+//   other: {
+//     "p:domain_verify": "a90a1f40513d7cb45fce1cf96e039edd"
+//   }
+// };
+
+let metadata: Metadata = {
+  metadataBase: new URL('https://dizipro.org'),
+  title: "High-Quality 3D Models Crafted by Experts | Dizipro",
+  description: "Dizipro delivers premium 3D models online, created by our skilled freelance team. Perfect for games, ads, and 3D printing.",
+  openGraph: {
+    title: "High-Quality 3D Models Crafted by Experts | Dizipro",
+    description: "Get premium 3D models from Dizipro's top freelance creators.",
+    url: "https://dizipro.org",
+    siteName: "Dizipro",
+    images: [
+      {
+        url: "https://dizipro.org/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Dizipro 3D Models",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "High-Quality 3D Models Crafted by Experts | Dizipro",
+    description: "Dizipro offers professional 3D modeling services for all your needs.",
+    images: ["https://dizipro.org/og-image.jpg"],
+  },
   other: {
-    "p:domain_verify": "a90a1f40513d7cb45fce1cf96e039edd"
-  }
+    "p:domain_verify": "a90a1f40513d7cb45fce1cf96e039edd",
+  },
 };
 
 export async function generateStaticParams() {
