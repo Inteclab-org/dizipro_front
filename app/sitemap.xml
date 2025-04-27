@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset 
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml"
+>
+  <url>
+    <loc>https://dizipro.org</loc>
+    <xhtml:link rel="alternate" hreflang="uz" href="https://dizipro.org/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://dizipro.org/ru/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://dizipro.org/en/"/>
+    <lastmod>2025-04-27T12:00:00+00:00</lastmod>
+  </url>
+
+  <url>
+    <loc>https://dizipro.org/portfolio</loc>
+    <xhtml:link rel="alternate" hreflang="uz" href="https://dizipro.org/portfolio"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://dizipro.org/ru/portfolio"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://dizipro.org/en/portfolio"/>
+    <lastmod>2025-04-27T12:00:00+00:00</lastmod>
+  </url>
+</urlset>
