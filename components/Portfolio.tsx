@@ -37,7 +37,7 @@ export default function Portfolio({
         ? supabase.from('category_projects_view').select(`id, name, src, project_id, images`, { count: "exact" }).eq('category_id', category).is('project_id', null)
         : supabase.from('all_projects_view').select(`id, name, src, project_id, images`, { count: "exact" });
 
-      const { data: projectsData, count } = await query.range((page - 1) * limit, page * limit - 1).limit(limit).order('id', { ascending: false });
+      const { data: projectsData, count } = await query.range((page - 1) * limit, page * limit - 1).limit(limit).order('id', { ascending: true });
       if (projectsData) {
         setProjects(projectsData);
       }
