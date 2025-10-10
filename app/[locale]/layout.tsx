@@ -74,6 +74,10 @@ let metadata: Metadata = {
 	other: {
 		'p:domain_verify': 'a90a1f40513d7cb45fce1cf96e039edd',
 	},
+	verification: {
+  google: 'i0rnlrNELonBOJ5Oe0yzpmg5QdoDXxnuSabvQ1Z32Ks',
+},
+
 }
 
 export async function generateStaticParams() {
