@@ -35,7 +35,7 @@ export default function ContactDialog({
         {
           locale === "uz" && <Link className="flex items-center gap-[8px] p-4 bg-muted" href="https://t.me/dizipro_order" target="_blank">
             <Phone className="w-[32px] h-[32px]" />
-            <Link className="font- text-[18px] tracking-[-0.56px] leading-[1.3]" href="tel:+998910088874" target="_blank">+998&nbsp;(91)&nbsp;008&nbsp;88&nbsp;74</Link>
+            <Link className="font- text-[18px] tracking-[-0.56px] leading-[1.3]" href="tel:+998907934488" target="_blank">+998&nbsp;(90)&nbsp;793&nbsp;44&nbsp;88</Link>
           </Link>
         }
         <div className="flex gap-2 justify-between">
