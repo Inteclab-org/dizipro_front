@@ -35,7 +35,7 @@ const Footer = memo(({
               </p>
               <div className="flex gap-[4px] text-base font-medium text-foreground/65">
                 <Mail className="w-[22px] h-[22px] shrink-0" />
-                diziprocompany@gmail.com
+                diziproorg@gmail.com
               </div>
             </div>
           </div>
