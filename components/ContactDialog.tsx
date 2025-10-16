@@ -7,6 +7,7 @@ import {
 import TelegramBig from "./icons/TelegramBig";
 import WhatsUp from "./icons/WhatsUp";
 import Phone from "./icons/Phone";
+import Mail from "./icons/Mail";
 import Link from "next/link";
 import { Locale } from "@/i18n";
 
@@ -38,6 +39,12 @@ export default function ContactDialog({
             <Link className="font- text-[18px] tracking-[-0.56px] leading-[1.3]" href="tel:+998907934488" target="_blank">+998&nbsp;(90)&nbsp;793&nbsp;44&nbsp;88</Link>
           </Link>
         }
+        <Link className="flex items-center gap-[8px] p-4 bg-muted" href="mailto:diziproorg@gmail.com" target="_blank">
+          <div className="flex items-center justify-center w-[32px] h-[32px]">
+            <Mail className="w-[22px] h-[22px] [&>path]:fill-black" />
+          </div>
+          <span className="font- text-[18px] tracking-[-0.56px] leading-[1.3]">diziproorg@gmail.com</span>
+        </Link>
         <div className="flex gap-2 justify-between">
           <Link className="p-4 bg-muted" href="https://t.me/dizipro_order" target="_blank">
             <TelegramBig className="w-[112px] h-[112px]" />
